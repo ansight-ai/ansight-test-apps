@@ -1,0 +1,19 @@
+Offline speech recognition components
+
+OpenAI Whisper base.en model, converted to GGML by the whisper.cpp project.
+Model identity and pinned source revision are in whisper-model.json.
+https://github.com/openai/whisper
+MIT license: WHISPER-MODEL-LICENSE.txt
+
+Whisper.net 1.9.1, by Sandro Hanea and contributors.
+Managed .NET bindings and the Whisper.net.Runtime CPU native package.
+https://github.com/sandrohanea/whisper.net
+MIT license: WHISPER-NET-LICENSE.txt
+
+whisper.cpp, by Georgi Gerganov and contributors.
+Native inference implementation used by Whisper.net.Runtime.
+https://github.com/ggml-org/whisper.cpp
+MIT license: WHISPER-CPP-LICENSE.txt
+
+The model is prepared during development and bundled with the harness.
+The application does not download models or send recordings to a cloud service.

@@ -16,6 +16,8 @@
     <AnsightRemoteToolsPolicy Condition="'$(Configuration)' == 'Debug'">Allowed</AnsightRemoteToolsPolicy>
     <!-- The harness APK must launch after adb install without IDE fast deployment. -->
     <EmbedAssembliesIntoApk Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">true</EmbedAssembliesIntoApk>
+    <!-- Whisper's Android targets inspect RuntimeIdentifiers, including when a build uses -r. -->
+    <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android' and '$(RuntimeIdentifier)' != '' and '$(RuntimeIdentifiers)' == ''">$(RuntimeIdentifier)</RuntimeIdentifiers>
   </PropertyGroup>
   <ItemGroup>
     <MauiIcon Include="Resources/AppIcon/appicon.svg" ForegroundFile="Resources/AppIcon/appiconfg.svg" Color="#1262ED" />
@@ -26,9 +28,16 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.20" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+    <PackageReference Include="Whisper.net" Version="1.9.1" />
+    <!-- Ships CPU libraries for Android and statically linked iOS device/simulator libraries. -->
+    <PackageReference Include="Whisper.net.Runtime" Version="1.9.1" />
     <PackageReference Include="Fody" Version="6.9.3" PrivateAssets="all" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" PrivateAssets="all" />
     <PackageReference Include="Ansight.Maui" Version="1.4.0-preview.5" Condition="'$(Configuration)' == 'Debug'" />
     <ProjectReference Include="../../src/Ansight.AudioHarness.Core/Ansight.AudioHarness.Core.csproj" />
   </ItemGroup>
+  <Target Name="ValidateWhisperModel" BeforeTargets="PrepareForBuild" Condition="'$(DesignTimeBuild)' != 'true'">
+    <Error Condition="!Exists('$(MSBuildProjectDirectory)/Resources/Raw/models/ggml-base.en.bin')"
+           Text="The bundled Whisper model is missing. From the audio-harness repository directory, run: python3 scripts/prepare-whisper-model.py. Then build the app again." />
+  </Target>
 </Project>

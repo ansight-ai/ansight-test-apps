@@ -1,0 +1,12 @@
+{
+  "schema": "ansight.whisper-model/v1",
+  "provider": "whisper.net",
+  "model": "base.en",
+  "fileName": "ggml-base.en.bin",
+  "sha256": "a03779c86df3323075f5e796cb2ce5029f00ec8869eee3fdfb897afe36c6d002",
+  "sizeBytes": 147964211,
+  "sourceRevision": "80da2d8bfee42b0e836fc3a9890373e5defc00a6",
+  "sourceUrl": "https://huggingface.co/ggerganov/whisper.cpp/resolve/80da2d8bfee42b0e836fc3a9890373e5defc00a6/ggml-base.en.bin",
+  "license": "MIT",
+  "licenseUrl": "https://github.com/openai/whisper/blob/main/LICENSE"
+}

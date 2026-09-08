@@ -15,3 +15,7 @@ FodyWeavers.xsd
 
 # Local run artifacts
 artifacts/
+
+# Prepared offline model weights; the pinned manifest remains versioned.
+Resources/Raw/models/*.bin
+Resources/Raw/models/*.partial
