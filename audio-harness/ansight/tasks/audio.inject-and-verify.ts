@@ -80,8 +80,14 @@ export default async function runTask(context: TaskInvocation<Input>): Promise<A
       const selectedProvider = await ansight.ui.find({ automationId: "transcription-provider-state", exact: true, limit: 1 });
       expect(selectedProvider.matches[0]?.text, { id: "transcription-provider-selected" }).toBe(desiredProvider);
       // This field configures the app's final assertion only; neither engine receives it as a prompt.
+      await ansight.ui.tap({ automationId: "expected-phrase", exact: true });
       await ansight.ui.typeText({ automationId: "expected-phrase", exact: true, value: expectedForUi!, replaceExisting: true });
       await ansight.keyboard.dismiss();
+      const expectationField = await ansight.ui.find({ automationId: "expected-phrase", exact: true, limit: 1 });
+      const observedExpectation = expectationField.matches[0]?.value ?? expectationField.matches[0]?.text ?? "";
+      writeEvidence(directory, "expected-input-observation.json", { observedExpectation, expectedForUi });
+      expect(normalizeTranscript(observedExpectation), { id: "expected-phrase-entered-before-recording" })
+        .toBe(normalizeTranscript(expectedForUi!));
     }
 
     await seekVisible(ansight, () => ansight.ui.find({ automationId: "start-listening", exact: true, limit: 1 }), "bottom");
