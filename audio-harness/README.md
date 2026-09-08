@@ -13,3 +13,5 @@ cd /Users/matthewrobbins/Development/git/ansight-test-apps/audio-harness
 The audio harness exercises speech injected by the host into the device's microphone path. Its documentation covers building, fixture generation, audio routing, and observable assertions. Eight synthesized Shakespeare and famous-quote WAVs are included in [fixtures/audio/quotes](fixtures/audio/quotes/README.md).
 
 The [Ansight workspace](ansight/README.md) contains the `audio.synthetic-microphone` agentic test, `audio.inject-and-verify` and `audio.quote-corpus` deterministic TypeScript tasks, and terminal-event artifact triggers. The tasks use `ansight.device.injectAudio()` on the selected running session and verify the app's actual microphone recording or final transcript.
+
+See the [testing guide](TESTING.md) for the next checks, direct CLI and task commands, retained validation results, and known platform limitations.
