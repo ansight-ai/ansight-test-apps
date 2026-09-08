@@ -48,6 +48,7 @@ export default async function runTask(context: TaskInvocation<Input>): Promise<A
   try {
     const capabilities = await ansight.device.audioCapabilities();
     writeEvidence(directory, "capabilities.json", capabilities);
+    const waitForWhisperUi = input.mode === "whisper" && capabilities.platform === "ios";
     // Android's idle app has no microphone reader yet. Other failed prerequisites stop before any tap.
     const readyForStart = capabilities.available || (capabilities.platform === "android"
       && capabilities.code === "microphone-not-ready" && capabilities.diagnostics.transportAvailable === true
@@ -84,10 +85,11 @@ export default async function runTask(context: TaskInvocation<Input>): Promise<A
     }
 
     await seekVisible(ansight, () => ansight.ui.find({ automationId: "start-listening", exact: true, limit: 1 }), "bottom");
-    // Capture/native mode injects immediately; Whisper first prepares its bundled model before capture.
+    // Android verifies the active guest microphone inside injectAudio. Avoid UI work that can outlast capture.
+    // iOS has no guest-microphone readiness probe, so wait for its model preparation and visible Listening state.
     await ansight.ui.tap({ automationId: "start-listening", exact: true });
     started = true;
-    if (input.mode === "whisper") {
+    if (waitForWhisperUi) {
       await seekVisible(ansight, () => ansight.ui.find({ automationId: "capture-phase", exact: true, limit: 1 }), "top");
       const listening = await ansight.ui.waitFor({ automationId: "capture-phase", exact: true, text: "Listening",
         timeoutMs: 35_000, pollIntervalMs: 500 });
@@ -101,7 +103,7 @@ export default async function runTask(context: TaskInvocation<Input>): Promise<A
     expect(injection.fixture.sha256, { id: "injected-fixture-identity" }).toBe(fixture.sha256);
 
     // Stop while the recording controls are still in the viewport, before seeking the result footer.
-    if (input.mode === "whisper") {
+    if (waitForWhisperUi) {
       await seekVisible(ansight, () => ansight.ui.find({ automationId: "stop-listening", exact: true, limit: 1 }), "bottom");
     }
     const stop = await ansight.ui.find({ automationId: "stop-listening", exact: true, limit: 1 });
