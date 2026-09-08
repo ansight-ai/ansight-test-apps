@@ -1,5 +1,7 @@
 # Tests
 
+The harness scenarios are `audio.synthetic-microphone` (capture proof) and `audio.whisper-transcription` (the same microphone proof plus offline transcription and model/audio provenance). Both delegate their deterministic steps to `audio.inject-and-verify`. They are optional agentic runs; authoring or validation does not execute them. See the [workspace guide](../README.md#agentic-test).
+
 A test describes a user journey and its observable finish line. Ansight gives
 the instructions to an agent, the agent operates the app, and a separate
 validation step decides whether the expected state was reached.

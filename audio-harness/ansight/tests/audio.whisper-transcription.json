@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "audio.whisper-transcription",
+  "name": "Offline Whisper transcribes synthetic microphone speech",
+  "appId": "ai.ansight.audioharness",
+  "prompt": "Use the current ai.ansight.audioharness SDK session on an iOS Simulator or Android Emulator with the pinned base.en Whisper model bundled. Inspect the fresh live UI and task catalog, including the use-whisper switch and transcription-provider-state label. Run the exact task audio.inject-and-verify with fixtureId shakespeare-hamlet and mode whisper. The task owns selecting offline Whisper with capture-only disabled, entering the fixture text only as the final validation expectation, starting ordinary microphone capture, injecting the WAV through ansight.device.injectAudio, stopping, awaiting local transcription, exporting exact-run SDK result and microphone artifacts, verifying both transcript and waveform, and resetting after success. Do not replay these mutations manually or pass the expected phrase as a recognition prompt. If the model, permissions, audio route, emulator transport, selectors, SDK artifacts, or recognition fail, retain the diagnostic and report failure; do not switch to native/cloud recognition or replace the captured audio with the fixture file. Inspect the task result and its retained evidence.",
+  "validation": {
+    "prompt": "Require a Passed task that proves both microphone reception and offline transcription of that same recording. Inspect the exact-run result, transferred WAV, pinned model identity and waveform reports in the task output evidenceDirectory. Delivery completion or a nonempty transcript alone is insufficient.",
+    "assertions": [
+      "The task observed a fresh app run ID and exported the immutable SDK result and microphone WAV for that exact run.",
+      "The final result is Completed with captureOnly false, isFinal true, passed true, and the complete actual transcript matches the Hamlet fixture after normalization.",
+      "The captured microphone WAV hash matches capture.sha256 and transcription.sourceAudioSha256; the whole spoken fixture has waveform correlation at least 0.90 and a different quote is rejected.",
+      "The result identifies provider whisper.net and model base.en, and modelSha256 matches the checked-in pinned model manifest.",
+      "The result records a normalized transcription input hash, 16000 Hz mono format, and processing time. The normalized hash is metadata, not an independently exported second recording.",
+      "The task reports captureVerified true, transcriptionVerified true and negativeControlRejected true, then resets the harness to Ready."
+    ]
+  }
+}

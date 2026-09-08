@@ -1,5 +1,7 @@
 # Tasks
 
+This harness defines `audio.inject-and-verify` and `audio.quote-corpus`. Both accept `mode: "capture" | "transcript" | "whisper"`, defaulting to `capture`. Whisper requires both the actual microphone WAV proof and a matching final offline transcript; `transcript` explicitly uses native recognition. See the [workspace guide](../README.md) for preparation, grounded selectors, deadlines and evidence.
+
 A task is a named recipe that runs against one live app session. Think of it as
 teaching Ansight a repeatable job once—such as opening a screen, reading app
 state, and checking the result—then invoking that exact job whenever you need it.

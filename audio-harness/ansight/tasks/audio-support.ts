@@ -5,6 +5,25 @@ import { execFileSync } from "node:child_process";
 import type { AnsightHost, AppToolCallResult, TaskInvocation, UiFindResult, UiNode } from "./ansight-task.d.ts";
 
 export interface QuoteFixture { id: string; text: string; filename: string }
+export type AudioTaskMode = "capture" | "transcript" | "whisper";
+export interface HarnessTranscription {
+  provider: string;
+  model: string;
+  modelSha256: string;
+  sourceAudioSha256: string;
+  transcriptionAudioSha256: string;
+  sampleRate: number;
+  channels: number;
+  processingMilliseconds: number;
+}
+export interface WhisperModelManifest {
+  schema: string;
+  provider: string;
+  model: string;
+  fileName: string;
+  sha256: string;
+  sizeBytes: number;
+}
 export interface HarnessResult {
   schema: string;
   runId: string;
@@ -14,6 +33,7 @@ export interface HarnessResult {
   passed: boolean;
   transcript: string;
   expected: string;
+  transcription?: HarnessTranscription | null;
   capture: {
     available: boolean;
     sha256: string;
@@ -50,7 +70,7 @@ export interface AudioTaskOutput {
   harnessRunId: string;
   taskRunId: string;
   sessionId: string;
-  mode: "capture" | "transcript";
+  mode: AudioTaskMode;
   captureVerified: boolean;
   transcriptionVerified: boolean;
   negativeControlRejected: boolean;
@@ -58,6 +78,7 @@ export interface AudioTaskOutput {
   injectionEvidenceId: string;
   waveformCorrelation?: number;
   transcript?: string;
+  transcription?: HarnessTranscription;
 }
 
 export function repositoryFile(repositoryRoot: string, relativePath: string): string {
@@ -114,6 +135,17 @@ export function prepareVerifier(repositoryRoot: string): void {
   execFileSync(join(realpathSync(repositoryRoot), ".venv-audio/bin/python"),
     ["-c", "import numpy; import shutil; assert shutil.which('ffmpeg'); assert shutil.which('ffprobe')"],
     { timeout: 10_000, maxBuffer: 64 * 1024 });
+}
+
+export function loadWhisperModel(repositoryRoot: string): WhisperModelManifest {
+  const model = JSON.parse(readFileSync(repositoryFile(repositoryRoot,
+    "apps/Ansight.AudioHarness/Resources/Raw/models/whisper-model.json"), "utf8")) as WhisperModelManifest;
+  if (model.schema !== "ansight.whisper-model/v1" || model.provider !== "whisper.net"
+    || model.model !== "base.en" || model.fileName !== "ggml-base.en.bin"
+    || !/^[a-f0-9]{64}$/.test(model.sha256) || !Number.isSafeInteger(model.sizeBytes) || model.sizeBytes <= 0) {
+    throw new Error("The pinned Whisper model manifest is invalid.");
+  }
+  return model;
 }
 
 export function sha256(bytes: Uint8Array): string {
@@ -183,6 +215,14 @@ export function compareRecording(repositoryRoot: string, fixturePath: string, mi
 
 export function normalizeTranscript(value: string): string {
   return value.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+}
+
+export function expectationForTyping(value: string): string {
+  // Simulator HID cannot type the corpus's em dash/curly apostrophe. These replacements
+  // preserve TranscriptValidator's punctuation rules, including contractions as one word.
+  const text = value.replace(/[\u2019\u02bc]/g, "'").replace(/[\u2013\u2014]/g, " ");
+  if (/[^\x20-\x7e]/.test(text)) throw new Error("The fixture expectation needs an explicit Simulator keyboard mapping.");
+  return text;
 }
 
 /** Seek an observed target using at most three gestures in the observed scroll container.

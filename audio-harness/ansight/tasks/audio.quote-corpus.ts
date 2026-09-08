@@ -1,19 +1,19 @@
 import type { TaskDefinition, TaskInvocation } from "./ansight-task.d.ts";
 import { evidenceDirectory, loadQuotes, writeEvidence } from "./audio-support.ts";
-import type { AudioTaskOutput } from "./audio-support.ts";
+import type { AudioTaskMode, AudioTaskOutput } from "./audio-support.ts";
 
-type Input = { mode: "capture" | "transcript" };
+type Input = { mode: AudioTaskMode };
 
 export const task = {
   "schemaVersion": 1,
   "appId": "ai.ansight.audioharness",
   "title": "Verify all eight speech fixtures",
-  "description": "Composes audio.inject-and-verify for all eight quote WAVs serially on the selected session. Requires matching microphone waveforms plus negative controls by default, or final transcripts in explicit transcript mode. Stops and preserves evidence at the first failed child.",
+  "description": "Composes audio.inject-and-verify for all eight quote WAVs serially on the selected session. Capture requires microphone waveforms and wrong-fixture controls; whisper additionally requires matching offline transcripts and provenance. Explicit transcript mode uses native recognition. Stops and preserves evidence at the first failed child.",
   "feature": "audio",
-  "keywords": ["corpus", "quotes", "microphone", "speech", "all", "eight"],
+  "keywords": ["corpus", "quotes", "microphone", "speech", "whisper", "offline", "all", "eight"],
   "inputSchema": {
     "type": "object",
-    "properties": { "mode": { "type": "string", "enum": ["capture", "transcript"], "default": "capture" } },
+    "properties": { "mode": { "type": "string", "enum": ["capture", "transcript", "whisper"], "default": "capture" } },
     "additionalProperties": false
   },
   "timeoutSeconds": 300,
@@ -33,8 +33,11 @@ export default async function runTask({ run, input, ansight, expect }: TaskInvoc
         taskId: "audio.inject-and-verify", input: { fixtureId: quote.id, mode: input.mode },
       });
       expect(child.output?.fixtureId, { id: `fixture-${quote.id}-verified` }).toBe(quote.id);
-      expect(input.mode === "capture" ? child.output?.captureVerified && child.output?.negativeControlRejected
-        : child.output?.transcriptionVerified, { id: `fixture-${quote.id}-outcome` }).toBe(true);
+      const microphoneVerified = child.output?.captureVerified && child.output?.negativeControlRejected;
+      const outcomeVerified = input.mode === "capture" ? microphoneVerified
+        : input.mode === "whisper" ? microphoneVerified && child.output?.transcriptionVerified
+        : child.output?.transcriptionVerified;
+      expect(outcomeVerified, { id: `fixture-${quote.id}-outcome` }).toBe(true);
       results.push(child.output!);
       writeEvidence(directory, "corpus.json", { complete: false, mode: input.mode, results });
     }
