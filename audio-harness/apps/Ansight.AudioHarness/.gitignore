@@ -1,0 +1,17 @@
+# .NET MAUI build output and generated bindings
+bin/
+obj/
+FodyWeavers.xsd
+
+# Local IDE and signing configuration
+.vs/
+.idea/
+*.user
+*.suo
+*.keystore
+*.mobileprovision
+*.p12
+.DS_Store
+
+# Local run artifacts
+artifacts/

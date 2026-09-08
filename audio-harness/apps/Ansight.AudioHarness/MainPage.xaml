@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Ansight.AudioHarness.ViewModels"
+             x:Class="Ansight.AudioHarness.MainPage"
+             x:DataType="vm:HarnessViewModel"
+             AutomationId="audio-harness-page" BackgroundColor="#F5F7FB" Title="Audio Harness">
+    <ScrollView AutomationId="harness-scroll">
+        <VerticalStackLayout AutomationId="harness-content" Padding="24,20,24,24" Spacing="20" MaximumWidthRequest="620">
+            <VerticalStackLayout AutomationId="harness-heading" Spacing="4">
+                <Label AutomationId="harness-brand" Text="ANSIGHT / TEST LAB" FontSize="11" CharacterSpacing="2" TextColor="#52647E" FontFamily="OpenSansSemibold" />
+                <Label AutomationId="harness-title" Text="Audio input" FontSize="32" FontFamily="OpenSansSemibold" />
+                <Label AutomationId="input-route" Text="{Binding InputRouteDescription}" FontSize="15" TextColor="#52647E" />
+            </VerticalStackLayout>
+            <Border AutomationId="capture-card" BackgroundColor="White" Stroke="#E0E6EF" StrokeShape="RoundRectangle 16" Padding="18">
+                <VerticalStackLayout AutomationId="capture-content" Spacing="12">
+                    <Grid AutomationId="capture-heading" ColumnDefinitions="*,Auto">
+                        <Label Text="{Binding Phase}" AutomationId="capture-phase" FontSize="20" FontFamily="OpenSansSemibold" />
+                        <Label Grid.Column="1" Text="{Binding Elapsed}" AutomationId="elapsed" TextColor="#52647E" VerticalOptions="Center" />
+                    </Grid>
+                    <ProgressBar Progress="{Binding InputLevel}" AutomationId="input-level" ProgressColor="#1262ED" BackgroundColor="#E9EEF6" />
+                    <Label Text="{Binding StatusMessage}" AutomationId="capture-status" FontSize="13" TextColor="#52647E" />
+                </VerticalStackLayout>
+            </Border>
+            <Grid AutomationId="capture-mode-row" IsVisible="{Binding SupportsCaptureOnly}" ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                <CheckBox IsChecked="{Binding CaptureOnly}" IsEnabled="{Binding CanStart}" AutomationId="capture-only"
+                          SemanticProperties.Description="Record audio without transcription" />
+                <VerticalStackLayout AutomationId="capture-mode-labels" Grid.Column="1" VerticalOptions="Center">
+                    <Label AutomationId="capture-only-label" Text="Record audio without transcription" FontSize="13" />
+                    <Label AutomationId="capture-only-state" Text="{Binding CaptureMode}" FontSize="11" />
+                </VerticalStackLayout>
+            </Grid>
+            <VerticalStackLayout AutomationId="expectation-content" Spacing="8" IsVisible="{Binding UsesSpeechRecognition}">
+                <Label AutomationId="expected-phrase-label" Text="EXPECTED PHRASE" FontSize="11" CharacterSpacing="1.5" FontFamily="OpenSansSemibold" TextColor="#52647E" />
+                <Border AutomationId="expected-phrase-border" BackgroundColor="White" Stroke="#E0E6EF" StrokeShape="RoundRectangle 12" Padding="10,4">
+                    <Editor Text="{Binding ExpectedPhrase}" AutomationId="expected-phrase" IsEnabled="{Binding CanStart}" AutoSize="TextChanges"
+                            MinimumHeightRequest="72" MaxLength="300" FontSize="16" TextColor="#172B4D" BackgroundColor="Transparent" />
+                </Border>
+                <Label AutomationId="language-description" Text="{Binding LanguageDescription}" FontSize="12" TextColor="#52647E" />
+            </VerticalStackLayout>
+            <Grid AutomationId="recording-controls" ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button Text="Start listening" AutomationId="start-listening" Command="{Binding StartCommand}" IsEnabled="{Binding CanStart}" />
+                <Button Grid.Column="1" Text="Stop" AutomationId="stop-listening" Command="{Binding StopCommand}" IsEnabled="{Binding CanStop}"
+                        BackgroundColor="#E7EDF7" TextColor="#172B4D" />
+            </Grid>
+            <Border AutomationId="result-card" BackgroundColor="White" Stroke="#E0E6EF" StrokeShape="RoundRectangle 16" Padding="18">
+                <VerticalStackLayout AutomationId="result-content" Spacing="12">
+                    <Grid AutomationId="transcript-heading" ColumnDefinitions="*,Auto">
+                        <Label AutomationId="transcript-label" Text="TRANSCRIPT" FontSize="11" CharacterSpacing="1.5" FontFamily="OpenSansSemibold" TextColor="#52647E" />
+                        <Label Grid.Column="1" Text="{Binding TranscriptKind}" AutomationId="transcript-kind" FontSize="11" TextColor="#52647E" />
+                    </Grid>
+                    <Label Text="{Binding TranscriptDisplay}" AutomationId="transcript" MinimumHeightRequest="64" FontSize="18" LineBreakMode="WordWrap" />
+                    <BoxView AutomationId="result-divider" HeightRequest="1" Color="#E9EEF6" />
+                    <Label Text="{Binding ValidationLabel}" AutomationId="validation-result" FontFamily="OpenSansSemibold" FontSize="17" TextColor="{Binding ValidationColor}" />
+                    <Label Text="{Binding ValidationMessage}" AutomationId="validation-detail" FontSize="12" TextColor="#52647E" />
+                </VerticalStackLayout>
+            </Border>
+            <Grid AutomationId="result-controls" ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button Text="Reset" AutomationId="reset-test" Command="{Binding ResetCommand}" IsEnabled="{Binding CanStart}"
+                        BackgroundColor="Transparent" TextColor="#1262ED" />
+                <Button Grid.Column="1" Text="Copy result" AutomationId="copy-result" Command="{Binding CopyResultCommand}" IsEnabled="{Binding HasResult}"
+                        BackgroundColor="Transparent" TextColor="#1262ED" />
+            </Grid>
+            <VerticalStackLayout AutomationId="run-evidence" Spacing="4">
+                <Label AutomationId="run-id-label" Text="RUN ID" FontSize="10" TextColor="#6B7B91" />
+                <Label AutomationId="run-id" Text="{Binding RunId}" FontSize="10" TextColor="#52647E" />
+                <Label AutomationId="result-saved" Text="{Binding ResultSaved}" FontSize="11" TextColor="#52647E" />
+                <Label AutomationId="artifact-status" Text="{Binding ArtifactStatus}" FontSize="11" TextColor="#52647E" />
+                <Label AutomationId="capture-file" Text="{Binding CaptureFilePath}" FontSize="10" LineBreakMode="MiddleTruncation" TextColor="#6B7B91" />
+                <Label AutomationId="capture-frame-count" Text="{Binding CapturedFrameCount}" FontSize="10" TextColor="#6B7B91" />
+            </VerticalStackLayout>
+            <Label AutomationId="platform-description" Text="{Binding PlatformDescription}" FontSize="11" TextColor="#6B7B91" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,12 @@
+**/bin/
+**/obj/
+**/node_modules/
+.vs/
+.DS_Store
+artifacts/
+/.venv-audio/
+__pycache__/
+*.py[cod]
+*.user
+*.suo
+**/FodyWeavers.xsd
