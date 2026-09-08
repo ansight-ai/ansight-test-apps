@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "audio.synthetic-microphone",
+  "name": "Synthetic microphone receives speech",
+  "appId": "ai.ansight.audioharness",
+  "prompt": "Use the current ai.ansight.audioharness SDK session on an iOS Simulator or Android Emulator. Inspect its live UI and the task catalog. Run the exact task audio.inject-and-verify with fixtureId shakespeare-hamlet and mode capture. The task owns mode selection, starting the ordinary app microphone recorder, calling ansight.device.injectAudio with the repository WAV, stopping, downloading exact-run SDK artifacts, comparing the full waveform and a wrong-fixture negative control, and resetting after success. Do not replay those mutations manually. If a permission, route, transport, or SDK prerequisite is missing, preserve its diagnostic and report the test blocked or failed; do not silently substitute a file-transcription API, speakers, an expected-text shortcut, or a simulated success. iOS requires the preconfigured BlackHole Simulator input route; Android requires an authenticated emulator audio endpoint and host microphone disabled. Inspect the task's terminal result and retained evidence.",
+  "validation": {
+    "prompt": "Require a Passed task with the named app recording and waveform assertions. Inspect the exact-run result and waveform reports retained in the task output evidenceDirectory. Provider delivery completion alone is insufficient, and capture-only success makes no transcription claim.",
+    "assertions": [
+      "The task has a fresh harness run ID and the SDK result JSON belongs to that exact run.",
+      "The captured microphone WAV SHA-256 equals the app's immutable recording metadata.",
+      "The complete spoken Hamlet fixture matches the actual microphone recording with waveform correlation at least 0.90.",
+      "The different spoken fixture is rejected by the same comparator.",
+      "The task reports captureVerified true, transcriptionVerified false, and resets the harness to Ready after successful verification."
+    ]
+  }
+}
