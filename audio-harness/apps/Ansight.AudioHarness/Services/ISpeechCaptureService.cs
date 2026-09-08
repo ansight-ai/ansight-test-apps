@@ -2,6 +2,7 @@ namespace Ansight.AudioHarness.Services;
 
 public enum SpeechCapturePhase
 {
+    Preparing,
     Listening,
     Processing,
     Completed,
@@ -9,7 +10,15 @@ public enum SpeechCapturePhase
     Captured
 }
 
-public sealed record SpeechCaptureRequest(string RunId, string Language, bool CaptureOnly = false);
+public enum TranscriptionProvider
+{
+    Native,
+    Whisper
+}
+
+public sealed record SpeechCaptureRequest(
+    string RunId, string Language, bool CaptureOnly = false,
+    TranscriptionProvider Provider = TranscriptionProvider.Native);
 
 public sealed record SpeechCaptureUpdate(
     string RunId,
@@ -17,7 +26,8 @@ public sealed record SpeechCaptureUpdate(
     string Transcript = "",
     double? InputLevel = null,
     string? Message = null,
-    string? CaptureFilePath = null);
+    string? CaptureFilePath = null,
+    AudioTranscriptionInfo? Transcription = null);
 
 public interface ISpeechCaptureService
 {

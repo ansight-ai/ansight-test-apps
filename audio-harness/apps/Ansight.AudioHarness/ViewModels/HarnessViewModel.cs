@@ -19,6 +19,8 @@ public sealed class HarnessViewModel
     private string? resultRunId;
     private string runExpectedPhrase = "";
     private bool runCaptureOnly;
+    private TranscriptionProvider runProvider;
+    private AudioTranscriptionInfo? runTranscription;
     private DateTimeOffset startedUtc;
     private CancellationTokenSource? durationLimit;
     private string? resultJson;
@@ -44,6 +46,7 @@ public sealed class HarnessViewModel
     public Command CopyResultCommand { get; }
     public string ExpectedPhrase { get; set; } = DefaultPhrase;
     public bool CaptureOnly { get; set; }
+    public bool UseWhisper { get; set; } = true;
     public bool SupportsCaptureOnly => true;
     public string RunId { get; private set; } = "";
     public string ResultSaved { get; private set; } = "Not saved";
@@ -51,6 +54,8 @@ public sealed class HarnessViewModel
     public long CapturedFrameCount { get; private set; }
     [DependsOn(nameof(CaptureOnly))]
     public string CaptureMode => CaptureOnly ? "Capture only" : "Transcription";
+    [DependsOn(nameof(UseWhisper))]
+    public string TranscriptionProviderName => UseWhisper ? "Whisper (offline)" : "Native speech";
     public string? CaptureFilePath { get; private set; }
     public string Transcript { get; private set; } = "";
     public string Phase { get; private set; } = "Ready";
@@ -86,12 +91,16 @@ public sealed class HarnessViewModel
     [DependsOn(nameof(IsFinal), nameof(Transcript), nameof(Phase))]
     public string TranscriptKind => Phase == "Captured" ? "CAPTURED" : IsFinal ? "FINAL" : Transcript.Length > 0 ? "PARTIAL" : "";
 
-    [DependsOn(nameof(CaptureOnly))]
+    [DependsOn(nameof(CaptureOnly), nameof(UseWhisper))]
     public string LanguageDescription => UsesSpeechRecognition
-        ? "English (US) · stops after 30 seconds or provider silence detection"
+        ? UseWhisper
+            ? "English · stop recording to transcribe locally · 30-second recording limit"
+            : "English (US) · stops after 30 seconds or provider silence detection"
         : "Microphone recording · stops automatically after 30 seconds";
-    [DependsOn(nameof(CaptureOnly))]
-    public string PlatformDescription => DeviceInfo.Platform == DevicePlatform.iOS
+    [DependsOn(nameof(CaptureOnly), nameof(UseWhisper))]
+    public string PlatformDescription => UsesSpeechRecognition && UseWhisper
+        ? "Whisper base.en · the actual microphone recording is transcribed on this device. No cloud service or speech-provider permission is required."
+        : DeviceInfo.Platform == DevicePlatform.iOS
         ? UsesSpeechRecognition
             ? "Apple Speech · audio level is measured from microphone samples. Recognition may use Apple servers."
             : "Microphone samples are saved locally as WAV. Speech recognition is not used. Compare the recording with the injected fixture to verify input."
@@ -120,10 +129,12 @@ public sealed class HarnessViewModel
         var runId = activeRunId;
         runExpectedPhrase = ExpectedPhrase;
         runCaptureOnly = !UsesSpeechRecognition;
+        runProvider = UseWhisper ? TranscriptionProvider.Whisper : TranscriptionProvider.Native;
+        runTranscription = null;
         startedUtc = DateTimeOffset.UtcNow;
         IsBusy = true;
         Phase = "Starting";
-        StatusMessage = runCaptureOnly ? "Checking microphone permission…" : "Checking microphone and speech permissions…";
+        StatusMessage = runCaptureOnly || UseWhisper ? "Preparing microphone capture…" : "Checking microphone and speech permissions…";
         ValidationLabel = runCaptureOnly ? "Awaiting audio capture" : "Awaiting final transcript";
         stopwatch.Restart();
         timer.Start();
@@ -131,7 +142,7 @@ public sealed class HarnessViewModel
         var token = durationLimit.Token;
         try
         {
-            await speech.StartAsync(new SpeechCaptureRequest(runId, "en-US", runCaptureOnly));
+            await speech.StartAsync(new SpeechCaptureRequest(runId, "en-US", runCaptureOnly, runProvider));
             if (activeRunId == runId && IsBusy)
                 _ = StopAtLimitAsync(runId, token);
         }
@@ -170,7 +181,7 @@ public sealed class HarnessViewModel
         // Invalidate callbacks before native cancellation so an old final cannot pass.
         activeRunId = null;
         await speech.CancelAsync();
-        await FinishAsync("Cancelled", "Capture stopped because the app left the foreground.", false);
+        await FinishAsync("Cancelled", "Capture stopped because the app left the foreground.", false, CaptureFilePath);
     }
 
     private async Task StopAtLimitAsync(string runId, CancellationToken cancellationToken)
@@ -205,11 +216,16 @@ public sealed class HarnessViewModel
                 return;
             if (update.InputLevel.HasValue)
                 InputLevel = Math.Clamp(update.InputLevel.Value, 0, 1);
+            if (update.CaptureFilePath is not null)
+                CaptureFilePath = update.CaptureFilePath;
             if (!string.IsNullOrEmpty(update.Transcript) || update.Phase == SpeechCapturePhase.Completed)
                 Transcript = update.Transcript;
 
             switch (update.Phase)
             {
+                case SpeechCapturePhase.Preparing:
+                    StatusMessage = update.Message ?? "Preparing speech capture…";
+                    break;
                 case SpeechCapturePhase.Listening:
                     if (Phase == "Starting")
                     {
@@ -223,7 +239,8 @@ public sealed class HarnessViewModel
                     StatusMessage = update.Message ?? "Waiting for the final transcript…";
                     break;
                 case SpeechCapturePhase.Completed:
-                    await FinishAsync("Completed", "Speech recognition finished.", true, update.CaptureFilePath);
+                    runTranscription = update.Transcription;
+                    await FinishAsync("Completed", update.Message ?? "Speech recognition finished.", true, update.CaptureFilePath);
                     break;
                 case SpeechCapturePhase.Captured:
                     if (!runCaptureOnly || string.IsNullOrWhiteSpace(update.CaptureFilePath))
@@ -279,6 +296,8 @@ public sealed class HarnessViewModel
             isFinal,
             passed,
             captureOnly = runCaptureOnly,
+            transcriptionProvider = runCaptureOnly ? "none" : runProvider == TranscriptionProvider.Whisper ? "whisper.net" : "native",
+            transcription = runTranscription is null ? (JsonElement?)null : JsonSerializer.SerializeToElement(runTranscription, new JsonSerializerOptions(JsonSerializerDefaults.Web)),
             captureFilePath,
             capture = JsonSerializer.SerializeToElement(capture, new JsonSerializerOptions(JsonSerializerDefaults.Web)),
             validation.NormalizedExpected,
@@ -331,6 +350,7 @@ public sealed class HarnessViewModel
         IsFinal = false;
         HasResult = false;
         resultJson = null;
+        runTranscription = null;
         ValidationLabel = "Not run";
         ValidationMessage = "Only a matching final transcript passes.";
         ValidationColor = Color.FromArgb("#52647E");

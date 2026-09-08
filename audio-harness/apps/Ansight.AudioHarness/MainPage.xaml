@@ -30,6 +30,14 @@
                     <Label AutomationId="capture-only-state" Text="{Binding CaptureMode}" FontSize="11" />
                 </VerticalStackLayout>
             </Grid>
+            <Grid AutomationId="transcription-provider-row" IsVisible="{Binding UsesSpeechRecognition}" ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                <CheckBox IsChecked="{Binding UseWhisper}" IsEnabled="{Binding CanStart}" AutomationId="use-whisper"
+                          SemanticProperties.Description="Use offline Whisper transcription" />
+                <VerticalStackLayout AutomationId="transcription-provider-labels" Grid.Column="1" VerticalOptions="Center">
+                    <Label AutomationId="use-whisper-label" Text="Use offline Whisper transcription" FontSize="13" />
+                    <Label AutomationId="transcription-provider-state" Text="{Binding TranscriptionProviderName}" FontSize="11" />
+                </VerticalStackLayout>
+            </Grid>
             <VerticalStackLayout AutomationId="expectation-content" Spacing="8" IsVisible="{Binding UsesSpeechRecognition}">
                 <Label AutomationId="expected-phrase-label" Text="EXPECTED PHRASE" FontSize="11" CharacterSpacing="1.5" FontFamily="OpenSansSemibold" TextColor="#52647E" />
                 <Border AutomationId="expected-phrase-border" BackgroundColor="White" Stroke="#E0E6EF" StrokeShape="RoundRectangle 12" Padding="10,4">

@@ -18,7 +18,9 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-        builder.Services.AddSingleton<ISpeechCaptureService, PlatformSpeechCaptureService>();
+        builder.Services.AddSingleton<PlatformSpeechCaptureService>();
+        builder.Services.AddSingleton<IAudioTranscriber, WhisperAudioTranscriber>();
+        builder.Services.AddSingleton<ISpeechCaptureService, TranscribingSpeechCaptureService>();
         var runs = new AudioRunStore();
         builder.Services.AddSingleton(runs);
         builder.Services.AddSingleton<HarnessViewModel>();
