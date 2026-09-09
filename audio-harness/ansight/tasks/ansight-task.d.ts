@@ -2840,7 +2840,7 @@ export interface TaskHostDeviceContext {
   /** Inspects the enforced live session's audio provider and readiness without playing audio. */
   audioCapabilities(): Promise<AudioCapabilitiesResult>;
   /** Delivers a PCM16 mono 16kHz WAV, at most 15 seconds, to the already-recording virtual device. Await completion; assert app capture/transcription separately. */
-  injectAudio(args: AudioInjectionArguments): Promise<AudioInjectionResult>;
+  injectMicrophoneAudio(args: AudioInjectionArguments): Promise<AudioInjectionResult>;
   /** Uses the enforced task session to set the selected device's simulated location. */
   setLocation(args: DeviceLocationArguments): Promise<DeviceLocationResult>;
   /** Uses the enforced task session to clear the selected device's simulated location. */
