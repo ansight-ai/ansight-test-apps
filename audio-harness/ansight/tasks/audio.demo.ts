@@ -17,7 +17,23 @@ export const task = {
 
 export default async function run({ ansight, expect }: TaskInvocation) {
   const expected = "To be or not to be that is the question.";
-  const { platform } = await ansight.device.audioCapabilities();
+  const capabilities = await ansight.device.audioCapabilities();
+
+  if (!capabilities.available) {
+    if (capabilities.code === "accessibility-permission-required") {
+      throw new Error([
+        "AUDIO DEMO BLOCKED — MACOS ACCESSIBILITY PERMISSION REQUIRED",
+        "The Ansight host cannot verify Simulator Audio Input.",
+        "Enable Accessibility for the application running the host in System Settings > Privacy & Security > Accessibility.",
+        "Restart the host from that application, then rerun the demo.",
+        "Recording has not started. No audio has been injected.",
+      ].join("\n"));
+    }
+
+    throw new Error(`AUDIO DEMO BLOCKED [${capabilities.code}]: ${capabilities.message}`);
+  }
+
+  const { platform } = capabilities;
 
   const mode = await seekVisible(ansight, { automationId: "capture-only-state" }, "top");
   if (mode.text === "Capture only") {
