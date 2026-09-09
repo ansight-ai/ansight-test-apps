@@ -47,7 +47,7 @@ Allow device storage for the installed package, Android installation staging, an
 
 The installed app verifies and prepares its bundled model before opening the microphone, with a 30-second preparation limit. After Stop, it converts the recorded microphone WAV to 16 kHz mono for Whisper and limits transcription to 60 seconds. Processing happens in the app; no API key, Apple Speech availability, Android speech provider, or runtime model download is required. A missing model, invalid hash, empty transcript, timeout or cancellation produces a failed run without a native/cloud fallback.
 
-The immutable result includes `transcription` metadata: `provider:"whisper.net"`, `model:"base.en"`, `modelSha256`, `sourceAudioSha256`, `transcriptionAudioSha256`, `sampleRate`, `channels`, and `processingMilliseconds`. The original microphone WAV remains unchanged and available through `microphone-wav`. Its hash must equal `sourceAudioSha256`; the normalized transcription input hash is retained as metadata. The [Whisper task](../../ansight/README.md#run-deterministic-verification) checks this provenance, the whole recording and a different-quote control, and the final transcript.
+The immutable result includes `transcription` metadata: `provider:"whisper.net"`, `model:"base.en"`, `modelSha256`, `sourceAudioSha256`, `transcriptionAudioSha256`, `sampleRate`, `channels`, and `processingMilliseconds`. The original microphone WAV remains unchanged and available through `microphone-wav`. Its hash must equal `sourceAudioSha256`; the normalized transcription input hash is retained as metadata. The [demo task](../../ansight/README.md) checks audio injection completion and the final transcript.
 
 ## Permissions
 
@@ -55,103 +55,26 @@ The app requests microphone access on both platforms. Capture-only and offline W
 
 If access was previously denied, enable it in the app's system Settings and retry. For a dedicated iOS test simulator, microphone permission can also be restored with `xcrun simctl privacy <SIMULATOR_UDID> grant microphone ai.ansight.audioharness`; relaunch the app afterward. Speech recognition has its own permission prompt. Host audio routing and macOS microphone access for Simulator are separate from these app permissions.
 
-## Make the speech fixture
+## Demo speech fixture
 
-On macOS, with `say` and `ffmpeg` available:
+The demo uses the checked-in `fixtures/speech.wav`: **To be or not to be that is
+the question.** It is mono 16 kHz PCM16 with one second of silence at each end.
+The task sets the app’s expected phrase before recording.
 
-```sh
-./scripts/make-audio-fixture.sh
-```
+Regenerate it on macOS with `say` and `ffmpeg` using
+`./scripts/make-audio-fixture.sh`. See [the fixture README](../../fixtures/README.md).
 
-This creates the ignored `fixtures/audio/expected.wav`: mono, 16 kHz PCM16, attenuated speech, and one second of silence at each end. The source phrase in `fixtures/audio/expected.txt` matches the app default: **The quick brown fox jumps over the lazy dog.** Recognition uses English (US). If you change the fixture text, update the app's expected phrase to match.
+## Run the demo
 
-Eight canonical quote WAVs are included under `fixtures/audio/quotes/`, with exact expectations and source attribution in `manifest.json`. Regenerate them using `./scripts/make-quote-fixtures.py`. Use the same WAV bytes when comparing platforms.
+Run [`audio.demo`](../../ansight/README.md) through Ansight. It selects offline
+Whisper, starts recording, injects `fixtures/speech.wav`, and checks the final
+transcript. Ansight handles platform audio injection and microphone readiness.
 
-Prepare the host runners once:
+The test app needs no separate audio player, Python audio environment, or host
+runner. The scripts folder contains only:
 
-```sh
-python3 -m venv .venv-audio
-.venv-audio/bin/python -m pip install -r scripts/requirements-audio.txt
-```
-
-## Route audio from the host
-
-**iOS Simulator:** install BlackHole with `brew install --cask blackhole-2ch`. Installation requires administrator authentication. If the device does not appear, restart the Mac or follow BlackHole's documented CoreAudio restart (`sudo killall -9 coreaudiod`), which briefly interrupts audio. On the tested Xcode 26.4 Simulator, select **I/O → Audio Input → BlackHole 2ch**. The Mac's default microphone and speakers can stay unchanged.
-
-The bundled player selects BlackHole explicitly for its own output and verifies that selection during playback:
-
-```sh
-./scripts/play-to-audio-device.sh --list
-./scripts/play-to-audio-device.sh --device BlackHole2ch_UID fixtures/audio/expected.wav
-```
-
-Start the harness and wait for **Listening** before playback. Enable **Record audio without transcription** to verify the microphone independently of Apple Speech. Play the complete fixture, then tap **Stop**. The app saves actual microphone buffers as PCM16 WAV and reports **Captured** with `captureFilePath` in `audio-results/latest.json`. Copy that file from the simulator's app data container, then verify it:
-
-```sh
-xcrun simctl get_app_container <SIMULATOR_UDID> ai.ansight.audioharness data
-.venv-audio/bin/python scripts/verify-microphone-capture.py fixtures/audio/expected.wav <CAPTURED_WAV> --output <VERIFICATION_JSON>
-```
-
-The verifier resamples both files to 16 kHz mono and requires correlation of at least 0.90 across the entire spoken fixture. Only zero padding is excluded; capture-start delay and gain differences are allowed. An iOS **Captured** result has `captureOnly: true`, `isFinal: false`, and `passed: false`, because no transcript assertion was attempted. The separate waveform report establishes whether the injected audio was received. Apple Speech availability is not required for this mode.
-
-The iOS corpus runner is intended for a connected Ansight session with working Simulator input delivery:
-
-```sh
-.venv-audio/bin/python scripts/run-ios-audio-corpus.py --simulator <SIMULATOR_UDID> --audio-device BlackHole2ch_UID
-```
-
-It resolves the session by the exact Simulator UDID, selects capture-only mode, records each quote, copies each fresh microphone WAV from the app container, and applies the same waveform assertion. It stops after the first infrastructure failure and retains evidence. The local Ansight attempt encountered a cached Simulator HID connection error (`Mach port invalid, device disconnected`) after a simulator reboot, before playback. Its end-to-end UI path therefore remains unverified locally.
-
-The successful local corpus used `scripts/ios-audio-corpus-computer-use.mjs` through the Computer Use skill's `node_repl` and official `@oai/sky` client. It observes and clicks the native Simulator controls; audio playback and recording verification use the same scripts above. To repeat that fallback, foreground the intended Simulator window, enable capture-only mode, complete one initial capture, and return to Ready. In `node_repl`, use a new output directory and the exact observed window title:
-
-```js
-var sky = (await import('@oai/sky')).sky;
-var createCorpus = (await import('/Users/matthewrobbins/Development/git/ansight-test-apps/audio-harness/scripts/ios-audio-corpus-computer-use.mjs')).createCorpus;
-var corpus = await createCorpus({
-  sky,
-  simulator: '<SIMULATOR_UDID>',
-  windowTitle: 'Ansight Audio Harness',
-  output: '/Users/matthewrobbins/Development/git/ansight-test-apps/audio-harness/artifacts/audio-harness/ios-corpus-' + Date.now()
-});
-```
-
-Call `nodeRepl.write(await corpus.runNext())` once per fixture, inspecting each result before continuing; after all eight, call `nodeRepl.write(await corpus.finish())`. The helper requires visible controls and a matching window title and leaves the app Ready with capture-only enabled. It is a Computer Use helper, not a standalone Node command.
-
-**Android Emulator:** the verified route uses the emulator's `injectAudio` gRPC API with host microphone access disabled. No virtual audio driver is needed for this route. The legacy runner uses the sibling checkout's `../../ansight/scripts/audio-input/inject_audio.py` and the host Python environment prepared above. Before using that native-transcription runner, disable **Use Whisper** and **Record audio without transcription**. The harness must already be open, have microphone permission, and have a working Android speech provider. Use the TypeScript task's explicit `whisper` mode for offline verification.
-
-Run from the dedicated `audio-harness/` folder, replacing the emulator serial:
-
-```sh
-.venv-audio/bin/python scripts/run-android-audio-test.py fixtures/audio/expected.wav --serial <EMULATOR_SERIAL>
-```
-
-The runner observes the Start button through Android UI automation, starts recording, and polls AudioFlinger for a non-standby microphone thread with active tracks and recent captured samples. It immediately injects the short fixture in the same process, then retrieves the harness's final JSON through **Copy result** and asserts the final transcript. Each run retains the fixture, AudioFlinger evidence, UI XML, a screenshot, the app's JSON, and a test report under `artifacts/audio-harness/`. `--injector <path>` overrides the sibling helper location; fixtures are limited to fifteen seconds, within the app's thirty-second capture limit.
-
-For a negative assertion, inject the same speech with a deliberately different expectation:
-
-```sh
-.venv-audio/bin/python scripts/run-android-audio-test.py fixtures/audio/expected.wav --serial <EMULATOR_SERIAL> --expected 'The purple elephant sleeps beside the river.' --outcome mismatch
-```
-
-A successful mismatch test requires the app to return a final nonempty transcript with `passed: false`. The runner's own `passed: true` then means that rejection was correct. Restore the default expectation afterward using the app editor, or `--expected 'The quick brown fox jumps over the lazy dog.'` on the next positive run.
-
-After generating the eight quote WAVs, run the whole manifest sequentially:
-
-```sh
-.venv-audio/bin/python scripts/run-android-audio-corpus.py fixtures/audio/quotes/manifest.json --serial <EMULATOR_SERIAL>
-```
-
-The corpus runner uses each manifest quote as the unchanged expectation. It retains each case and an aggregate `result.json`, reports mismatches without changing the expected text, and restores the default phrase and Ready state afterward. If the selected emulator disconnects or a preflight fails, remaining cases are marked skipped and no further injection is attempted. An optional `--output <new-directory>` makes the evidence location explicit. After repairing an infrastructure failure, `--ids <fixture-id> ...` resumes selected cases into a new evidence directory; preserve the original results too.
-
-**Emulator 37.1.11 caveat:** its audio forwarder dereferences a null native microphone stream when `injectAudio` begins without an open guest recording. This was confirmed against the crash report, installed binary, and [upstream audio forwarder](https://android.googlesource.com/platform/external/qemu/+/refs/heads/emu-master-dev/audio/audio_forwarder.c). The guarded runner refuses to start injection unless fresh recording evidence exists; it does not enable the host microphone. Avoid a separate manual injection command after a screenshot or model round-trip, because Android may already have stopped on silence. A guest recording can still stop between observation and the RPC, so this is a tested mitigation rather than an emulator-level fix. Use one active capture/injection per emulator. RPC completion alone never establishes transcript success.
-
-Repeated runs also exposed a broken emulator input state despite active guest recording: pre-injection power rose from the normal local noise floor near −78 dB to roughly −3 dB with host microphone access disabled. The runner now refuses injection above −40 dB when AudioFlinger reports that signal history. This avoided a subsequent crash, but required a cold boot to continue; unattended reliability of this emulator version is not established. For a dedicated stopped test AVD, an authenticated cold-boot launch is:
-
-```sh
-emulator -avd <AVD_NAME> -no-snapshot -port <EVEN_CONSOLE_PORT> -grpc <GRPC_PORT> -grpc-use-token
-```
-
-This preserves user data and disables snapshot loading/saving. The gRPC flag and token option are needed if the chosen launch method does not expose the discovery endpoint automatically. Verify that host microphone access remains disabled before running the harness.
+- `prepare-whisper-model.py` — prepares the offline model before building.
+- `make-audio-fixture.sh` — optionally regenerates the checked-in speech WAV.
 
 ## Run and assert
 
