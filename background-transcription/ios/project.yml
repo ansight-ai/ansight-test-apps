@@ -1,0 +1,40 @@
+name: BackgroundTranscriptionSpike
+options:
+  bundleIdPrefix: ai.ansight.testapps
+  deploymentTarget:
+    iOS: "26.0"
+packages:
+  AnsightSDK:
+    path: ../../../ansight-sdk/src/ios
+targets:
+  BackgroundTranscriptionSpike:
+    type: application
+    platform: iOS
+    sources:
+      - path: BackgroundTranscriptionSpike
+      - path: ../fixtures/fdr-day-of-infamy-20s.wav
+        buildPhase: resources
+      - path: ../fixtures/fdr-day-of-infamy-30s.wav
+        buildPhase: resources
+      - path: ../fixtures/fdr-day-of-infamy-60s.wav
+        buildPhase: resources
+    dependencies:
+      - package: AnsightSDK
+        product: Ansight
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ai.ansight.testapps.backgroundtranscription
+        PRODUCT_NAME: Background Transcription Spike
+        SWIFT_VERSION: "5.0"
+        SWIFT_STRICT_CONCURRENCY: minimal
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: BackgroundTranscriptionSpike/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Automatic
+    scheme:
+      testTargets: []
+      preActions:
+        - name: Prepare Ansight build tool
+          script: "$PROJECT_DIR/prepare-ansight-build-tool.sh"
+          settingsTarget: BackgroundTranscriptionSpike

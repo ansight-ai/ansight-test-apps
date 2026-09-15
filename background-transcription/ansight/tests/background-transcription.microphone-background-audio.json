@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "background-transcription.microphone-background-audio",
+  "name": "Background microphone transcription",
+  "appId": "ai.ansight.testapps.backgroundtranscription",
+  "taskId": "background-transcription.microphone-background-audio",
+  "prompt": "Run the background-transcription.microphone-background-audio task using the bundled 10-second archival speech fixture. The workflow must start Device mic recording, background the app, inject the fixture through the virtual microphone, and foreground the app after delivery completes.",
+  "validation": {
+    "prompt": "Validate the final app state.",
+    "assertions": [
+      "The audio provider completed delivery to the selected virtual device.",
+      "The app was moved to the background before audio delivery and returned to the foreground afterward.",
+      "The final durable transcription result is completed, identifies device_microphone input, records that the app was backgrounded, and contains a non-empty transcript."
+    ]
+  }
+}

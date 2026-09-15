@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.BackgroundTranscription" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#3155A4</item>
+        <item name="colorPrimaryVariant">#203A78</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:fontFamily">sans</item>
+    </style>
+</resources>

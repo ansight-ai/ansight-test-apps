@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Background Transcript</string>
+    <string name="screen_title">Background transcription</string>
+    <string name="screen_description">Injected speech starts after a 10-second backgrounding window. Device mic starts immediately: tap Start, speak, then background the app.</string>
+    <string name="start_background_transcription">Start background transcription</string>
+    <string name="stop_background_transcription">Stop background transcription</string>
+    <string name="audio_source">Audio source</string>
+    <string name="fixture_duration">Recording duration</string>
+    <string name="refresh_durable_result">Refresh durable result</string>
+    <string name="phase_format">Phase: %1$s</string>
+    <string name="no_run_yet">No run yet.</string>
+    <string name="ansight_enrollment">Ansight enrollment</string>
+    <string name="enrollment_status_initial">State: checking…</string>
+    <string name="scan_enrollment_qr">Scan enrollment QR</string>
+    <string name="clear_enrollment">Clear enrollment</string>
+    <string name="opening_enrollment_scanner">Opening Ansight QR scanner…</string>
+    <string name="enrollment_failed">Enrollment failed.</string>
+</resources>

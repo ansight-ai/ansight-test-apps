@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		108C04D73629DD8EFB34587F /* fdr-day-of-infamy-20s.wav in Resources */ = {isa = PBXBuildFile; fileRef = A70538D6E948D69228DF6899 /* fdr-day-of-infamy-20s.wav */; };
+		1B4D8E93C8B655ADEFA122DC /* SpikeAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F48AEDD7D735E5E977EDEE /* SpikeAppDelegate.swift */; };
+		27202A63BC1033DFFD0F02BB /* AnsightEnrollmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267ED35051DA1790E0F66A95 /* AnsightEnrollmentModel.swift */; };
+		2FF6B91A3C48EA015825C714 /* AnsightTelemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0BD5192F62B53DDB4B489 /* AnsightTelemetry.swift */; };
+		31BAE665BE8B7B3C9F32BCFB /* Ansight in Frameworks */ = {isa = PBXBuildFile; productRef = BD4644A9F6970F24A1042453 /* Ansight */; };
+		663A10D6473E6B1380A8AFA5 /* TranscriptionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E159F347CC055A7CA453682 /* TranscriptionCoordinator.swift */; };
+		81C72DBC932574DDC9CC980A /* fdr-day-of-infamy-60s.wav in Resources */ = {isa = PBXBuildFile; fileRef = EF30D702D1826F88ABA29699 /* fdr-day-of-infamy-60s.wav */; };
+		8E5FC97602002DB39DF8684F /* RunStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B49DDF60954962C93C7680 /* RunStore.swift */; };
+		8FFD7769CBE2796CDF6E3B4F /* BackgroundTranscriptionSpikeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF73BE6A4858509886547C /* BackgroundTranscriptionSpikeApp.swift */; };
+		9AB94F246ED5E76FE5E474DC /* TranscriptionRunArtifactProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ACF173BAFF933B5AB99EF3 /* TranscriptionRunArtifactProvider.swift */; };
+		B1024581211D662B60912F9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D4BA919C65A4926FDD2483B /* Assets.xcassets */; };
+		BC11EFE23A3F8550712022DD /* fdr-day-of-infamy-30s.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05918B51E7C9C5FD78DF390C /* fdr-day-of-infamy-30s.wav */; };
+		BF2C84F8F2D47942174E4B6B /* TranscriptionRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C16FD969421FB7BF4F410D /* TranscriptionRun.swift */; };
+		CA01CE8DDABD7DDBC016AEFE /* SpeechFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243E1F7B0BDAF1FEA716334F /* SpeechFixture.swift */; };
+		EEA2ADFEFA973B6CDCF0692C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE46104822221390BE863BC6 /* ContentView.swift */; };
+		F92BF0EA4AC75624B7D74764 /* CaptureValidationNetworkProbe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D12A8B4FAF94DA3B9D25DBE /* CaptureValidationNetworkProbe.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		05918B51E7C9C5FD78DF390C /* fdr-day-of-infamy-30s.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "fdr-day-of-infamy-30s.wav"; sourceTree = "<group>"; };
+		0E159F347CC055A7CA453682 /* TranscriptionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionCoordinator.swift; sourceTree = "<group>"; };
+		21F48AEDD7D735E5E977EDEE /* SpikeAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikeAppDelegate.swift; sourceTree = "<group>"; };
+		243E1F7B0BDAF1FEA716334F /* SpeechFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechFixture.swift; sourceTree = "<group>"; };
+		267ED35051DA1790E0F66A95 /* AnsightEnrollmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnsightEnrollmentModel.swift; sourceTree = "<group>"; };
+		5D12A8B4FAF94DA3B9D25DBE /* CaptureValidationNetworkProbe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureValidationNetworkProbe.swift; sourceTree = "<group>"; };
+		90ACF173BAFF933B5AB99EF3 /* TranscriptionRunArtifactProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionRunArtifactProvider.swift; sourceTree = "<group>"; };
+		9D4BA919C65A4926FDD2483B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5B49DDF60954962C93C7680 /* RunStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStore.swift; sourceTree = "<group>"; };
+		A70538D6E948D69228DF6899 /* fdr-day-of-infamy-20s.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "fdr-day-of-infamy-20s.wav"; sourceTree = "<group>"; };
+		CCAF73BE6A4858509886547C /* BackgroundTranscriptionSpikeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTranscriptionSpikeApp.swift; sourceTree = "<group>"; };
+		CFCAB89C498DEFF1A82C7CD9 /* BackgroundTranscriptionSpike.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BackgroundTranscriptionSpike.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7C16FD969421FB7BF4F410D /* TranscriptionRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionRun.swift; sourceTree = "<group>"; };
+		EBCA4F99493EEA9BC62312C8 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ios; path = "../../../ansight-sdk/src/ios"; sourceTree = SOURCE_ROOT; };
+		EF30D702D1826F88ABA29699 /* fdr-day-of-infamy-60s.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "fdr-day-of-infamy-60s.wav"; sourceTree = "<group>"; };
+		F2379C2B47341BE6121D1BE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F3C0BD5192F62B53DDB4B489 /* AnsightTelemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnsightTelemetry.swift; sourceTree = "<group>"; };
+		FE46104822221390BE863BC6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		444145E4D31C83C20D16BC01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31BAE665BE8B7B3C9F32BCFB /* Ansight in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		09028BB11AD7238D4834895D /* BackgroundTranscriptionSpike */ = {
+			isa = PBXGroup;
+			children = (
+				267ED35051DA1790E0F66A95 /* AnsightEnrollmentModel.swift */,
+				F3C0BD5192F62B53DDB4B489 /* AnsightTelemetry.swift */,
+				9D4BA919C65A4926FDD2483B /* Assets.xcassets */,
+				CCAF73BE6A4858509886547C /* BackgroundTranscriptionSpikeApp.swift */,
+				5D12A8B4FAF94DA3B9D25DBE /* CaptureValidationNetworkProbe.swift */,
+				FE46104822221390BE863BC6 /* ContentView.swift */,
+				F2379C2B47341BE6121D1BE7 /* Info.plist */,
+				A5B49DDF60954962C93C7680 /* RunStore.swift */,
+				243E1F7B0BDAF1FEA716334F /* SpeechFixture.swift */,
+				21F48AEDD7D735E5E977EDEE /* SpikeAppDelegate.swift */,
+				0E159F347CC055A7CA453682 /* TranscriptionCoordinator.swift */,
+				D7C16FD969421FB7BF4F410D /* TranscriptionRun.swift */,
+				90ACF173BAFF933B5AB99EF3 /* TranscriptionRunArtifactProvider.swift */,
+			);
+			path = BackgroundTranscriptionSpike;
+			sourceTree = "<group>";
+		};
+		368E3462AE0DB554F1B75704 = {
+			isa = PBXGroup;
+			children = (
+				09028BB11AD7238D4834895D /* BackgroundTranscriptionSpike */,
+				6C934058ACEDE398DE9DF6A3 /* fixtures */,
+				8A003348E7266BF7B0830354 /* Packages */,
+				E84128D03D036F4F2FB3706F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6C934058ACEDE398DE9DF6A3 /* fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				A70538D6E948D69228DF6899 /* fdr-day-of-infamy-20s.wav */,
+				05918B51E7C9C5FD78DF390C /* fdr-day-of-infamy-30s.wav */,
+				EF30D702D1826F88ABA29699 /* fdr-day-of-infamy-60s.wav */,
+			);
+			name = fixtures;
+			path = ../fixtures;
+			sourceTree = "<group>";
+		};
+		8A003348E7266BF7B0830354 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				EBCA4F99493EEA9BC62312C8 /* ios */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		E84128D03D036F4F2FB3706F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFCAB89C498DEFF1A82C7CD9 /* BackgroundTranscriptionSpike.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A327AA158EEB9052F82783C /* BackgroundTranscriptionSpike */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 135B7576FFAA1C2466DF20E1 /* Build configuration list for PBXNativeTarget "BackgroundTranscriptionSpike" */;
+			buildPhases = (
+				1E43EFE2D2F8BC15A165F22A /* Sources */,
+				DA5621F82D02CFD07505332F /* Resources */,
+				444145E4D31C83C20D16BC01 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BackgroundTranscriptionSpike;
+			packageProductDependencies = (
+				BD4644A9F6970F24A1042453 /* Ansight */,
+			);
+			productName = BackgroundTranscriptionSpike;
+			productReference = CFCAB89C498DEFF1A82C7CD9 /* BackgroundTranscriptionSpike.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2FDA0C9D481FCDBA37136A14 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					3A327AA158EEB9052F82783C = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 19B3259230BE8DB04DFA8110 /* Build configuration list for PBXProject "BackgroundTranscriptionSpike" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 368E3462AE0DB554F1B75704;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A6CE5EF817AD96922659A4CA /* XCLocalSwiftPackageReference "../../../ansight-sdk/src/ios" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E84128D03D036F4F2FB3706F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A327AA158EEB9052F82783C /* BackgroundTranscriptionSpike */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DA5621F82D02CFD07505332F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1024581211D662B60912F9A /* Assets.xcassets in Resources */,
+				108C04D73629DD8EFB34587F /* fdr-day-of-infamy-20s.wav in Resources */,
+				BC11EFE23A3F8550712022DD /* fdr-day-of-infamy-30s.wav in Resources */,
+				81C72DBC932574DDC9CC980A /* fdr-day-of-infamy-60s.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1E43EFE2D2F8BC15A165F22A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27202A63BC1033DFFD0F02BB /* AnsightEnrollmentModel.swift in Sources */,
+				2FF6B91A3C48EA015825C714 /* AnsightTelemetry.swift in Sources */,
+				8FFD7769CBE2796CDF6E3B4F /* BackgroundTranscriptionSpikeApp.swift in Sources */,
+				F92BF0EA4AC75624B7D74764 /* CaptureValidationNetworkProbe.swift in Sources */,
+				EEA2ADFEFA973B6CDCF0692C /* ContentView.swift in Sources */,
+				8E5FC97602002DB39DF8684F /* RunStore.swift in Sources */,
+				CA01CE8DDABD7DDBC016AEFE /* SpeechFixture.swift in Sources */,
+				1B4D8E93C8B655ADEFA122DC /* SpikeAppDelegate.swift in Sources */,
+				663A10D6473E6B1380A8AFA5 /* TranscriptionCoordinator.swift in Sources */,
+				BF2C84F8F2D47942174E4B6B /* TranscriptionRun.swift in Sources */,
+				9AB94F246ED5E76FE5E474DC /* TranscriptionRunArtifactProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0015539BAA08CE39ADA81CA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1435EB3AA5C7F9DA06D2FCE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BackgroundTranscriptionSpike/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.ansight.testapps.backgroundtranscription;
+				PRODUCT_NAME = "Background Transcription Spike";
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DAE6C5B9EAF54928E2FF9623 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		ED5B11C6485D7B9620D130A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BackgroundTranscriptionSpike/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.ansight.testapps.backgroundtranscription;
+				PRODUCT_NAME = "Background Transcription Spike";
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		135B7576FFAA1C2466DF20E1 /* Build configuration list for PBXNativeTarget "BackgroundTranscriptionSpike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED5B11C6485D7B9620D130A9 /* Debug */,
+				1435EB3AA5C7F9DA06D2FCE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		19B3259230BE8DB04DFA8110 /* Build configuration list for PBXProject "BackgroundTranscriptionSpike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0015539BAA08CE39ADA81CA6 /* Debug */,
+				DAE6C5B9EAF54928E2FF9623 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A6CE5EF817AD96922659A4CA /* XCLocalSwiftPackageReference "../../../ansight-sdk/src/ios" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../../ansight-sdk/src/ios";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BD4644A9F6970F24A1042453 /* Ansight */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Ansight;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 2FDA0C9D481FCDBA37136A14 /* Project object */;
+}

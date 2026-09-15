@@ -1,0 +1,7 @@
+android/.gradle/
+android/build/
+android/app/build/
+ansight/node_modules/
+ios/Build/
+ios/.swiftpm/
+**/xcuserdata/
