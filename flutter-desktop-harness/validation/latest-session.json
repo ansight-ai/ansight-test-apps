@@ -1,0 +1,129 @@
+{
+  "schema": "ai.ansight.flutter-desktop-harness-session.v1",
+  "generatedUtc": "2026-09-17T07:08:34Z",
+  "evidence": {
+    "screenshot": {
+      "frameId": "20260917070824481-fe0a5cd8399d4b6ebdb1ca10709496fb",
+      "capturedAtUtc": "2026-09-17T07:08:24.481+00:00",
+      "format": "jpeg",
+      "width": 960,
+      "height": 720,
+      "quality": 60,
+      "byteCount": 79324,
+      "exportedPath": "validation/latest-screenshot.jpg"
+    },
+    "visualTree": {
+      "snapshotId": "stream-588790BF-E2B5-471C-877F-38E4AF4B5882",
+      "capturedAtUtc": "2026-09-17T07:08:24.481+00:00",
+      "visualTreeKind": "flutter",
+      "visualTreeFormat": "ansight.flutter.visual-tree.compact.v2",
+      "runtimePlatform": "flutter",
+      "source": "sdk.sessionCapture",
+      "nodeCount": 399,
+      "visitedNodeCount": 2355,
+      "automationIds": [
+        "capture-screen",
+        "data-insert",
+        "data-refresh",
+        "data-seed",
+        "database-summary",
+        "fixture-dashboard",
+        "fixture-tab-data",
+        "fixture-tab-navigation",
+        "fixture-tab-overview",
+        "fixture-tab-tools",
+        "harness-scroll",
+        "initialize",
+        "install-flutter-tools",
+        "open-pairing-dialog",
+        "pairing-payload",
+        "record-events",
+        "record-metric",
+        "run-e2e-scenario",
+        "show-pairing-dialog",
+        "snapshot"
+      ],
+      "truncated": false,
+      "screenshotCapturedAtUtc": "2026-09-17T07:08:24.481+00:00"
+    },
+    "fps": {
+      "channelId": 3,
+      "sampleCount": 8,
+      "latestSample": {
+        "channelId": 3,
+        "value": 40,
+        "capturedAtUtc": "2026-09-17T07:08:27.15+00:00",
+        "segmentId": 1
+      }
+    },
+    "touch": {
+      "sampleCount": 6,
+      "firstSample": {
+        "id": "touch-8df148a7628fda0-0-1-0-0",
+        "action": "down",
+        "capturedAtUtc": "2026-09-17T07:08:23.034+00:00",
+        "pointerId": 1,
+        "pointerIndex": 0,
+        "pointerCount": 1,
+        "x": 400,
+        "y": 328,
+        "normalizedX": 0.5,
+        "normalizedY": 0.5466666666666666,
+        "surfaceWidth": 800,
+        "surfaceHeight": 600,
+        "coordinateSpace": "window",
+        "coordinateUnit": "points",
+        "surfaceScale": 2
+      },
+      "latestSample": {
+        "id": "touch-8df148a76cb3110-0-3-0-0",
+        "action": "up",
+        "capturedAtUtc": "2026-09-17T07:08:24.097+00:00",
+        "pointerId": 3,
+        "pointerIndex": 0,
+        "pointerCount": 1,
+        "x": 400,
+        "y": 100,
+        "normalizedX": 0.5,
+        "normalizedY": 0.16666666666666666,
+        "surfaceWidth": 800,
+        "surfaceHeight": 600,
+        "coordinateSpace": "window",
+        "coordinateUnit": "points",
+        "surfaceScale": 2
+      }
+    }
+  },
+  "session": {
+    "sessionId": "ai-ansight-flutter-harness-1701",
+    "appId": "ai.ansight.flutter.harness",
+    "clientName": "Ansight Flutter Harness",
+    "name": "Flutter desktop harness validation",
+    "status": "WebSocket Error",
+    "isHistorical": true,
+    "isPinned": true,
+    "createdUtc": "2026-09-17T07:08:22.832524+00:00",
+    "lastUpdatedUtc": "2026-09-17T07:08:27.58529+00:00",
+    "sdkVersion": "1.6.0",
+    "tags": [
+      "flutter",
+      "macos",
+      "harness",
+      "sdk-validation"
+    ],
+    "platform": "macos",
+    "deviceFormFactor": "desktop",
+    "totals": {
+      "metrics": 542,
+      "metricChannels": 9,
+      "fpsSamples": 8,
+      "logs": 25,
+      "events": 20,
+      "images": 2,
+      "networkRequests": 0,
+      "visualTrees": 2,
+      "touches": 6,
+      "artifacts": 0
+    }
+  }
+}
