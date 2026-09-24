@@ -1,0 +1,12 @@
+<resources>
+    <item name="new_note" type="id" />
+    <item name="add_samples" type="id" />
+    <item name="notes_list" type="id" />
+    <item name="note_count" type="id" />
+    <item name="animation_toggle" type="id" />
+    <item name="note_title" type="id" />
+    <item name="note_body" type="id" />
+    <item name="save_note" type="id" />
+    <item name="delete_note" type="id" />
+    <item name="back_to_notes" type="id" />
+</resources>
