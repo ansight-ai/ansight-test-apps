@@ -9,3 +9,19 @@ Small apps for validating features in the Ansight CLI and SDKs.
 | [Flutter Desktop Harness](flutter-desktop-harness/README.md) | Flutter on macOS 10.15+ | Exercise the Flutter SDK through its full feature harness and retain an evidence-backed Ansight session. |
 | [Modal Surface Evidence](modal-surface-evidence/README.md) | Native Android | Verify touches in a modal window and screenshots of controls over a GPU surface. |
 | [SDK-less Notes](sdkless-notes/README.md) | Native iOS Simulator and Android Emulator | Notes stored in local SQLite with no Ansight SDK or third-party runtime dependencies. |
+
+## SDK-free sample registration
+
+Enable automatic recording for the iOS and Android Notes samples, without selecting devices:
+
+```sh
+./sdkless-notes/scripts/register-sample-apps.sh
+```
+
+Remove their watches and app metadata while retaining recordings and installed apps:
+
+```sh
+./sdkless-notes/scripts/deregister-sample-apps.sh
+```
+
+See the [SDK-less Notes setup](sdkless-notes/README.md#register-and-deregister-automatic-recording) for details.

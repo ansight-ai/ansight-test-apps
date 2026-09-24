@@ -76,6 +76,35 @@ sqlite3 /tmp/sdkless-notes-android.sqlite 'PRAGMA integrity_check; SELECT id,tit
 
 Both databases have `user_version=1` and a `notes` table with `id`, `title`, `body`, `created_at`, and `updated_at`. IDs are integer primary keys; timestamps are UTC strings. SQL parameters are bound rather than concatenated.
 
+## Register and deregister automatic recording
+
+Run these scripts from this directory, or invoke them by absolute path from anywhere. They require Python 3 and the installed `ansight` CLI/host with automatic device discovery (local build `2026092417` or a newer build containing that feature).
+
+```sh
+./scripts/register-sample-apps.sh
+ansight app watch list
+
+# Later, remove the sample registration and watches:
+./scripts/deregister-sample-apps.sh
+```
+
+**Register** adds the `SDK-less Notes` app metadata and enables two watches, covering all iOS simulators and Android emulators. The iOS watch captures `Documents/notes.sqlite`; Android captures `files/notes.sqlite` on exit. No device IDs or device registration are required. Boot a simulator/emulator with the sample app installed, then launch the app normally to begin recording.
+
+**Deregister** removes every watch for the dedicated `ai.ansight.testapps.sdklessnotes` sample ID, then removes its app metadata. Active sample recordings are finalized by watch removal. Recorded sessions, installed apps, their SQLite databases, and other apps' registrations/watches are preserved. The app can still appear in Ansight through its historical sessions.
+
+Both scripts are safe to rerun. Registering again updates/enables the two standard watches without duplicating them. It replaces other watches for this sample ID, including legacy device-specific or overlapping app-wide watches, so they cannot take capture ownership without the configured database snapshots. The scripts do not build/install/launch apps, start/stop the host, or add an SDK.
+
+Keep the resident host running with `ansight host run` for automatic recording. If it is stopped, the scripts save configuration and registration prints the command to start it. An existing linked codebase is preserved during registration; these scripts do not add a codebase link.
+
+Optional executable and data-directory overrides apply consistently to every command:
+
+```sh
+./scripts/register-sample-apps.sh --ansight /path/to/ansight --data-dir /path/to/ansight-data
+./scripts/deregister-sample-apps.sh --ansight /path/to/ansight --data-dir /path/to/ansight-data
+```
+
+`ANSIGHT_CLI` is also supported as an executable override. Use the same data directory for both scripts and the resident host. See `--help` for options.
+
 ## Use with Ansight
 
 Use the patched CLI **and resident host**. These commands require normal Ansight account/app access but never pair an SDK:
