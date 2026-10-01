@@ -6,6 +6,7 @@ Small apps for validating features in the Ansight CLI and SDKs.
 | --- | --- | --- |
 | [Audio Harness](audio-harness/README.md) | iOS Simulator and Android Emulator | Inject speech through the microphone and verify the actual recording or native transcript. |
 | [Background Transcription Spike](background-transcription/README.md) | Native Swift (iOS 26+) and Kotlin (Android 15+) | Validate injected-speech and live-microphone transcription while an Ansight-instrumented app is backgrounded. |
+| [Evergine Tools Demo](evergine-tools-demo/README.md) | .NET MAUI on iOS and Android | Prototype Evergine scene inspection and camera control through Ansight remote tools. |
 | [Flutter Desktop Harness](flutter-desktop-harness/README.md) | Flutter on macOS 10.15+ | Exercise the Flutter SDK through its full feature harness and retain an evidence-backed Ansight session. |
 | [Modal Surface Evidence](modal-surface-evidence/README.md) | Native Android | Verify touches in a modal window and screenshots of controls over a GPU surface. |
 | [RealityKit Capture](realitykit-capture/README.md) | .NET MAUI on a LiDAR iPhone (iOS 18+) | Capture a space or object with ARKit and RealityKit, export GLB assets, and attach the visual scan to an Ansight session. |
