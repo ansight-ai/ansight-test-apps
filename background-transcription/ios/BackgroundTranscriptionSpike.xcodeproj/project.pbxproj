@@ -39,7 +39,7 @@
 		CCAF73BE6A4858509886547C /* BackgroundTranscriptionSpikeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTranscriptionSpikeApp.swift; sourceTree = "<group>"; };
 		CFCAB89C498DEFF1A82C7CD9 /* BackgroundTranscriptionSpike.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BackgroundTranscriptionSpike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7C16FD969421FB7BF4F410D /* TranscriptionRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionRun.swift; sourceTree = "<group>"; };
-		EBCA4F99493EEA9BC62312C8 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ios; path = "../../../ansight-sdk/src/ios"; sourceTree = SOURCE_ROOT; };
+		EBCA4F99493EEA9BC62312C8 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ios; path = "../../../ansight/ansight-sdk/src/ios"; sourceTree = SOURCE_ROOT; };
 		EF30D702D1826F88ABA29699 /* fdr-day-of-infamy-60s.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "fdr-day-of-infamy-60s.wav"; sourceTree = "<group>"; };
 		F2379C2B47341BE6121D1BE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F3C0BD5192F62B53DDB4B489 /* AnsightTelemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnsightTelemetry.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			mainGroup = 368E3462AE0DB554F1B75704;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				A6CE5EF817AD96922659A4CA /* XCLocalSwiftPackageReference "../../../ansight-sdk/src/ios" */,
+				8869BC33CFD1824E71BFA20E /* XCLocalSwiftPackageReference "../../../ansight/ansight-sdk/src/ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E84128D03D036F4F2FB3706F /* Products */;
@@ -395,9 +395,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		A6CE5EF817AD96922659A4CA /* XCLocalSwiftPackageReference "../../../ansight-sdk/src/ios" */ = {
+		8869BC33CFD1824E71BFA20E /* XCLocalSwiftPackageReference "../../../ansight/ansight-sdk/src/ios" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../../ansight-sdk/src/ios";
+			relativePath = "../../../ansight/ansight-sdk/src/ios";
 		};
 /* End XCLocalSwiftPackageReference section */
 

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "motion.ios-shake",
+  "name": "iOS Simulator UIKit shake delivery",
+  "appId": "ai.ansight.testapps.motionharness",
+  "prompt": "Run the motion.ios-shake task on a booted iOS Simulator with the Motion Harness app foregrounded.",
+  "validation": {
+    "prompt": "Verify the iOS app visibly reports Shake detected after Ansight posts the Simulator shake gesture.",
+    "assertions": [
+      "The Motion Harness iOS app reports Shake detected after ansight.device.shake()."
+    ]
+  }
+}

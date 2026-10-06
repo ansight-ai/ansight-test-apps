@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="motion_sensor_status" type="id" />
+    <item name="motion_sample_count" type="id" />
+    <item name="motion_last_sample" type="id" />
+    <item name="motion_shake_count" type="id" />
+    <item name="motion_shake_status" type="id" />
+    <item name="motion_custom_status" type="id" />
+    <item name="motion_reset" type="id" />
+</resources>

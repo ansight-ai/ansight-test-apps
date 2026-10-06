@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "motion.shake-and-samples",
+  "name": "Shake and accelerometer delivery",
+  "appId": "ai.ansight.testapps.motionharness",
+  "prompt": "Run the motion.shake-and-samples task on an Android emulator with the Motion Harness app foregrounded.",
+  "validation": {
+    "prompt": "Verify the app, not just the host, visibly reports both a detected shake and the custom acceleration sample.",
+    "assertions": [
+      "The Motion Harness app reports Shake detected after the simulated shake.",
+      "The Motion Harness app reports Custom sample observed after the configured accelerometer sequence."
+    ]
+  }
+}

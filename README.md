@@ -2,15 +2,17 @@
 
 Small apps for validating features in the Ansight CLI and SDKs.
 
-| App | Platforms | Purpose |
-| --- | --- | --- |
-| [Audio Harness](audio-harness/README.md) | iOS Simulator and Android Emulator | Inject speech through the microphone and verify the actual recording or native transcript. |
-| [Background Transcription Spike](background-transcription/README.md) | Native Swift (iOS 26+) and Kotlin (Android 15+) | Validate injected-speech and live-microphone transcription while an Ansight-instrumented app is backgrounded. |
-| [Evergine Tools Demo](evergine-tools-demo/README.md) | .NET MAUI on iOS and Android | Prototype Evergine scene inspection and camera control through Ansight remote tools. |
-| [Flutter Desktop Harness](flutter-desktop-harness/README.md) | Flutter on macOS 10.15+ | Exercise the Flutter SDK through its full feature harness and retain an evidence-backed Ansight session. |
-| [Modal Surface Evidence](modal-surface-evidence/README.md) | Native Android | Verify touches in a modal window and screenshots of controls over a GPU surface. |
-| [RealityKit Capture](realitykit-capture/README.md) | .NET MAUI on a LiDAR iPhone (iOS 18+) | Capture a space or object with ARKit and RealityKit, export GLB assets, and attach the visual scan to an Ansight session. |
-| [SDK-less Notes](sdkless-notes/README.md) | Native iOS Simulator and Android Emulator | Notes stored in local SQLite with no Ansight SDK or third-party runtime dependencies. |
+| Suite | Platforms | Device requirement | Purpose |
+| --- | --- | --- | --- |
+| [Annotations](annotations/README.md) | iOS, Android | Simulator or emulator | Verify native in-app annotation capture and same-session host delivery. |
+| [Audio](audio/README.md) | iOS, Android | Simulator or emulator | Inject speech through the virtual microphone and verify the recording or native transcript. |
+| [Background Transcription](background-transcription/README.md) | iOS 26+, Android 15+ | Physical device for native speech validation; simulator or emulator for the automated injection test | Validate transcription while an Ansight-instrumented app is backgrounded. |
+| [Evergine Tools](evergine-tools/README.md) | .NET MAUI on iOS and Android | iOS simulator verified; Android unverified | Prototype Evergine scene inspection and camera control through Ansight remote tools. |
+| [Flutter](flutter/README.md) | Flutter on macOS 10.15+ | Mac host | Exercise the Flutter SDK through its full feature harness and retain an evidence-backed Ansight session. |
+| [Modal Surface](modal-surface/README.md) | Native Android | Emulator | Verify touches in a modal window and screenshots of controls over a GPU surface. |
+| [Motion](motion/README.md) | Native Android and iOS | Android emulator or iOS simulator | Verify app-observed accelerometer injection on Android and automated UIKit shake delivery on iOS. |
+| [RealityKit](reality-kit/README.md) | .NET MAUI on iOS 18+ | **Physical LiDAR iPhone required** | Capture a space or object with ARKit and RealityKit, export GLB assets, and attach the visual scan to an Ansight session. |
+| [SDK-less Notes](sdkless-notes/README.md) | Native iOS and Android | Simulator or emulator | Validate local SQLite notes without an Ansight SDK or third-party runtime. |
 
 ## SDK-free sample registration
 

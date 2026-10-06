@@ -5,7 +5,7 @@ options:
     iOS: "26.0"
 packages:
   AnsightSDK:
-    path: ../../../ansight-sdk/src/ios
+    path: ../../../ansight/ansight-sdk/src/ios
 targets:
   BackgroundTranscriptionSpike:
     type: application

@@ -3,7 +3,7 @@ set -eu
 
 project_directory="${PROJECT_DIR:-$(pwd)}"
 configuration="${CONFIGURATION:-Debug}"
-sdk_package_path="$project_directory/../../../ansight-sdk/src/ios"
+sdk_package_path="$project_directory/../../../ansight/ansight-sdk/src/ios"
 scratch_path="$project_directory/Build/ansight-host-tool"
 destination_directory="$project_directory/Build/Products/$configuration"
 macos_sdk="$(xcrun --sdk macosx --show-sdk-path)"

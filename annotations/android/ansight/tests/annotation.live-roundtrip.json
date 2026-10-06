@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "annotation.live-roundtrip",
+  "name": "Android native annotation roundtrip",
+  "appId": "ai.ansight.harness",
+  "prompt": "Use the connected debuggable Android native harness. On the Overview tab, scroll within Runtime Controls to the Annotate button and tap it. Verify that the native editor opens over a captured screen. Draw a visible freehand stroke in the middle of the image, enter the exact overall feedback text 'annotation e2e android roundtrip', and tap Save. Wait for the harness status to report a completed annotation result. Do not create or edit a host annotation directly; the record must come from the app's Annotate.PresentAsync flow.",
+  "validation": {
+    "prompt": "Use the visible app editor and returned harness status as evidence. The companion verification script checks host persistence in the same session.",
+    "assertions": [
+      "The app opened the native annotation editor from its Annotate control.",
+      "A visible freehand stroke and exact feedback text were entered before Save.",
+      "After Save, the harness reported a completed annotation result with an annotation ID."
+    ]
+  }
+}
