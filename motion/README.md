@@ -28,7 +28,7 @@ ansight task list --app-id ai.ansight.testapps.motionharness --repository "$PWD"
 ansight task run motion.shake-and-samples --app-id ai.ansight.testapps.motionharness --repository "$PWD" --device-id emulator-5554 --json
 ```
 
-The task requires a running Ansight host and a connected app session. It resets the counters, sends six alternating shake pulses, checks the app's **Shake detected** state, then sends a custom 32 m/s² X-axis sample and checks **Custom sample observed**. The matching test definition is at [`ansight/tests/motion.shake-and-samples.json`](ansight/tests/motion.shake-and-samples.json).
+The task requires a running Ansight host and a connected app session. It resets the counters, sends six alternating shake pulses, checks the app's **Shake detected** state, then sends a custom 32 m/s² X-axis sample and checks **Custom sample observed**. The matching test definition is at [`ansight/tests/motion.shake-and-samples.yaml`](ansight/tests/motion.shake-and-samples.yaml).
 
 ## iOS Simulator
 
@@ -48,7 +48,7 @@ cd ..
 ansight task run motion.ios-shake --app-id ai.ansight.testapps.motionharness --repository "$PWD" --device-id SIMULATOR_UDID --json
 ```
 
-The task calls `ansight.device.shake()` and waits for **Shake detected** in the app. The matching test definition is at [`ansight/tests/motion.ios-shake.json`](ansight/tests/motion.ios-shake.json). You can also choose **Device > Shake Gesture** in Simulator to check the app manually. **RESET COUNTERS** clears the count. iOS sends a fixed UIKit gesture; timed accelerometer samples remain Android only.
+The task calls `ansight.device.shake()` and waits for **Shake detected** in the app. The matching test definition is at [`ansight/tests/motion.ios-shake.yaml`](ansight/tests/motion.ios-shake.yaml). You can also choose **Device > Shake Gesture** in Simulator to check the app manually. **RESET COUNTERS** clears the count. iOS sends a fixed UIKit gesture; timed accelerometer samples remain Android only.
 
 The [SDK capture apps](../../ansight/ansight-sdk/test-apps/motion/README.md) verify opt-in motion event capture
 in the Android and iOS SDKs.

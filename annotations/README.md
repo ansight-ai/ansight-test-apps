@@ -7,8 +7,8 @@ harnesses, so the test exercises the aggregate package and its public
 
 | Platform | App ID | Workspace |
 | --- | --- | --- |
-| iOS Simulator | `ai.ansight.ios.native-harness` | [iOS test](ios/ansight/tests/annotation.live-roundtrip.json) |
-| Android Emulator | `ai.ansight.harness` | [Android test](android/ansight/tests/annotation.live-roundtrip.json) |
+| iOS Simulator | `ai.ansight.ios.native-harness` | [iOS test](ios/ansight/tests/annotation.live-roundtrip.yaml) |
+| Android Emulator | `ai.ansight.harness` | [Android test](android/ansight/tests/annotation.live-roundtrip.yaml) |
 
 The iOS workspace test and the Android runner open the native editor, draw a
 freehand stroke, and save exact feedback text. `verify-session.py` then checks
