@@ -11,6 +11,7 @@ Small apps for validating features in the Ansight CLI and SDKs.
 | [Flutter](flutter/README.md) | Flutter on macOS 10.15+ | Mac host | Exercise the Flutter SDK through its full feature harness and retain an evidence-backed Ansight session. |
 | [Modal Surface](modal-surface/README.md) | Native Android | Emulator | Verify touches in a modal window and screenshots of controls over a GPU surface. |
 | [Motion](motion/README.md) | Native Android and iOS | Android emulator or iOS simulator | Verify app-observed accelerometer injection on Android and automated UIKit shake delivery on iOS. |
+| [QR Pairing — MAUI](qr-pairing/maui/README.md) | .NET MAUI on iOS and Android | Simulator/emulator for local registration; physical device for QR enrollment | Reusable Ansight pairing, remembered enrollment, reconnect, diagnostics and capture controls. |
 | [RealityKit](reality-kit/README.md) | .NET MAUI on iOS 18+ | **Physical LiDAR iPhone required** | Capture a space or object with ARKit and RealityKit, export GLB assets, and attach the visual scan to an Ansight session. |
 | [SDK-less Notes](sdkless-notes/README.md) | Native iOS and Android | Simulator or emulator | Validate local SQLite notes without an Ansight SDK or third-party runtime. |
 
