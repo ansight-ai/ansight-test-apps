@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../schema/test-definition.v1.schema.json
+schemaVersion: 1
+id: "telemetry.record"
+name: "Fractional telemetry, timed spans, and MAUI properties"
+appId: "ai.ansight.testapps.telemetry"
+taskId: telemetry.record
