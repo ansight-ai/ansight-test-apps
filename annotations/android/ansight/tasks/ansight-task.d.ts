@@ -1,4 +1,4 @@
-// Generated from the Ansight repository task v2 contract (v1 SDK modules remain supported).
+// Generated from the Ansight repository task contract.
 
 /**
  * # Purpose and usage
@@ -80,9 +80,9 @@ export type TaskFramework =
  */
 export interface TaskDefinition {
   /** Contract version. Omitted descriptors are interpreted as version 1. */
-  schemaVersion?: 1 | 2;
+  schemaVersion?: 1;
 
-  /** Version 2 requirements are checked before importing the task module. */
+  /** Optional requirements are checked before importing the task module. */
   requires?: ExecutionRequirements;
 
   /** Whether this task may be executed. Defaults to true. */

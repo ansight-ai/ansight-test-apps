@@ -1,4 +1,4 @@
-// Generated from the Ansight repository trigger v2 contract (v1 SDK modules remain supported).
+// Generated from the Ansight repository trigger contract.
 
 /**
  * # Purpose and usage
@@ -153,8 +153,8 @@ export interface TriggerDefinition<
   TEventKind extends EventKind = EventKind,
 > {
   /** Contract version. Omitted descriptors are interpreted as version 1. */
-  schemaVersion?: 1 | 2;
-  /** Version 2 requirements checked before importing the module. */
+  schemaVersion?: 1;
+  /** Optional requirements are checked before importing the module. */
   requires?: { capabilities?: string[]; appTools?: string[] };
 
   /** Whether this trigger may match events and execute. Defaults to true. */
@@ -573,7 +573,7 @@ export type TriggerFunction<
   invocation: TriggerContext<TPayload, TEventKind>,
 ) => AppToolAction | HostEvidenceAction | null | void | Promise<AppToolAction | HostEvidenceAction | null | void>;
 
-/** One bounded host evidence action, available in descriptor version 2. */
+/** One bounded host evidence action. */
 export interface HostEvidenceAction {
   type: "hostTool";
   toolName: "ansight_take_screenshot" | "ansight_capture_sandbox_file" | "ansight_create_annotation";
