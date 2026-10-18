@@ -1,0 +1,7 @@
+schemaVersion: 1
+id: screenshots.periodic-enabled
+name: Periodic screenshot metadata enabled
+appId: ai.ansight.testapps.screenshotgeometry
+taskId: screenshots.periodic
+taskInput:
+  expectedMetadata: true

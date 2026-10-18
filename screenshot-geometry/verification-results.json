@@ -1,0 +1,89 @@
+{
+  "appId": "ai.ansight.testapps.screenshotgeometry",
+  "verifiedAtUtc": "2026-10-18T04:02:20.914202+00:00",
+  "build": "Local SDK and CLI source; unreleased changes. Android emulator API 33 and iOS simulator 26.4.",
+  "cases": [
+    {
+      "platform": "android",
+      "testId": "screenshots.geometry",
+      "periodicIncludeSystemUiMetadata": true,
+      "exitCode": 0,
+      "message": "Task passed 18 assertion(s).",
+      "sessionId": "ai-ansight-testapps-screenshotgeometry-006",
+      "completedUtc": "2026-10-18T04:00:18.041392+00:00",
+      "replayUrl": "http://127.0.0.1:47966/?sessionId=ai-ansight-testapps-screenshotgeometry-006"
+    },
+    {
+      "platform": "android",
+      "testId": "screenshots.periodic-enabled",
+      "periodicIncludeSystemUiMetadata": true,
+      "exitCode": 0,
+      "message": "Task passed 4 assertion(s).",
+      "sessionId": "ai-ansight-testapps-screenshotgeometry-004",
+      "completedUtc": "2026-10-18T03:59:32.713551+00:00",
+      "replayUrl": "http://127.0.0.1:47966/?sessionId=ai-ansight-testapps-screenshotgeometry-004"
+    },
+    {
+      "platform": "ios",
+      "testId": "screenshots.geometry",
+      "periodicIncludeSystemUiMetadata": true,
+      "exitCode": 0,
+      "message": "Task passed 18 assertion(s).",
+      "sessionId": "ai-ansight-testapps-screenshotgeometry-001",
+      "completedUtc": "2026-10-18T03:54:47.978022+00:00",
+      "replayUrl": "http://127.0.0.1:47966/?sessionId=ai-ansight-testapps-screenshotgeometry-001"
+    },
+    {
+      "platform": "ios",
+      "testId": "screenshots.periodic-enabled",
+      "periodicIncludeSystemUiMetadata": true,
+      "exitCode": 0,
+      "message": "Task passed 4 assertion(s).",
+      "sessionId": "ai-ansight-testapps-screenshotgeometry-003",
+      "completedUtc": "2026-10-18T03:56:17.634352+00:00",
+      "replayUrl": "http://127.0.0.1:47966/?sessionId=ai-ansight-testapps-screenshotgeometry-003"
+    },
+    {
+      "platform": "ios",
+      "testId": "screenshots.periodic-disabled",
+      "periodicIncludeSystemUiMetadata": false,
+      "exitCode": 0,
+      "message": "Task passed 2 assertion(s).",
+      "sessionId": "ai-ansight-testapps-screenshotgeometry-007",
+      "completedUtc": "2026-10-18T04:00:38.76828+00:00",
+      "replayUrl": "http://127.0.0.1:47966/?sessionId=ai-ansight-testapps-screenshotgeometry-007"
+    },
+    {
+      "platform": "ios",
+      "testId": "screenshots.geometry",
+      "periodicIncludeSystemUiMetadata": false,
+      "exitCode": 0,
+      "message": "Task passed 18 assertion(s).",
+      "sessionId": "ai-ansight-testapps-screenshotgeometry-008",
+      "completedUtc": "2026-10-18T04:01:15.993361+00:00",
+      "replayUrl": "http://127.0.0.1:47966/?sessionId=ai-ansight-testapps-screenshotgeometry-008"
+    }
+  ],
+  "otherChecks": {
+    "hostRegressionTests": 216,
+    "dotnetFocusedTests": 39,
+    "kotlinCoreTests": 98,
+    "swiftOptionsAndTransportTests": 21,
+    "swiftOfflineGeometryTest": 1,
+    "reactNativeTests": 31,
+    "flutterCaptureTests": 29,
+    "playerInspectionTests": 5,
+    "documentationTests": 12,
+    "capacitorTestsAndBuild": "passed",
+    "taskTypeCheck": "passed",
+    "testValidation": "three definitions valid",
+    "protectedBuildProperties": "Release has no DEBUG symbol; remote tools Disallowed"
+  },
+  "cleanup": "All harness apps stopped; isolated host retained for replay.",
+  "limitations": [
+    "Live application coverage is MAUI on Android and iOS; other SDK stacks have configuration/unit/build checks.",
+    "Physical cutouts, rotation, split-screen and multi-window transitions were not exercised.",
+    "Exact iOS cutout bounds remain unknown; external capture currently supplies no geometry.",
+    "The periodic-disabled case accepts host-managed WebP capture; it must use a binary built with IncludeSystemUiMetadata=false."
+  ]
+}

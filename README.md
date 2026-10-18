@@ -15,6 +15,7 @@ Small apps for validating features in the Ansight CLI and SDKs.
 | [Motion](motion/README.md) | Native Android and iOS | Android emulator or iOS simulator | Verify app-observed accelerometer injection on Android and automated UIKit shake delivery on iOS. |
 | [QR Pairing — MAUI](qr-pairing/maui/README.md) | .NET MAUI on iOS and Android | Simulator/emulator for local registration; physical device for QR enrollment | Reusable Ansight pairing, remembered enrollment, reconnect, diagnostics and capture controls. |
 | [RealityKit](reality-kit/README.md) | .NET MAUI on iOS 18+ | **Physical LiDAR iPhone required** | Capture a space or object with ARKit and RealityKit, export GLB assets, and attach the visual scan to an Ansight session. |
+| [Screenshot Geometry — MAUI](screenshot-geometry/README.md) | .NET MAUI on Android and iOS | Emulator or simulator | Verify capture metadata, opt-out, retained geometry, and explicit screenshot ignore masks. |
 | [Telemetry — MAUI](telemetry/README.md) | .NET MAUI on Android and iOS | Emulator or simulator | Verify fractional metrics, units, nested/overlapping spans, outcomes, incomplete spans, and MAUI appearance properties. |
 | [SDK-less Notes](sdkless-notes/README.md) | Native iOS and Android | Simulator or emulator | Validate local SQLite notes without an Ansight SDK or third-party runtime. |
 

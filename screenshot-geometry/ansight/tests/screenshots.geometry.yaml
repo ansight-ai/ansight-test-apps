@@ -1,0 +1,5 @@
+schemaVersion: 1
+id: screenshots.geometry
+name: Screenshot metadata and explicit ignore masks
+appId: ai.ansight.testapps.screenshotgeometry
+taskId: screenshots.geometry

@@ -1,0 +1,7 @@
+schemaVersion: 1
+id: screenshots.periodic-disabled
+name: Periodic screenshot metadata disabled
+appId: ai.ansight.testapps.screenshotgeometry
+taskId: screenshots.periodic
+taskInput:
+  expectedMetadata: false
