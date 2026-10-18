@@ -1,0 +1,437 @@
+{
+  "verifiedDate": "2026-10-18",
+  "cliVersion": "1.5.1",
+  "cliBuild": "2026101801",
+  "captureMode": "sdk",
+  "runs": [
+    {
+      "platform": "android",
+      "sessionId": "ai-ansight-testapps-artifacts-2269",
+      "passed": true,
+      "durationMilliseconds": 62278,
+      "traceEnabled": true,
+      "assertions": [
+        {
+          "id": "connected-to-host",
+          "passed": true
+        },
+        {
+          "id": "check-counters-reset",
+          "passed": true
+        },
+        {
+          "id": "baseline-list-complete",
+          "passed": true
+        },
+        {
+          "id": "report-host-receipt",
+          "passed": true
+        },
+        {
+          "id": "report-retained-before-receipt",
+          "passed": true
+        },
+        {
+          "id": "report-artifact-id",
+          "passed": true
+        },
+        {
+          "id": "report-mime-type",
+          "passed": true
+        },
+        {
+          "id": "report-content-complete",
+          "passed": true
+        },
+        {
+          "id": "report-is-utf8",
+          "passed": true
+        },
+        {
+          "id": "report-unicode-content",
+          "passed": true
+        },
+        {
+          "id": "report-byte-length",
+          "passed": true
+        },
+        {
+          "id": "binary-host-receipt",
+          "passed": true
+        },
+        {
+          "id": "binary-retained-before-receipt",
+          "passed": true
+        },
+        {
+          "id": "binary-entry-present",
+          "passed": true
+        },
+        {
+          "id": "binary-mime-type",
+          "passed": true
+        },
+        {
+          "id": "binary-content-complete",
+          "passed": true
+        },
+        {
+          "id": "binary-spans-three-chunks",
+          "passed": true
+        },
+        {
+          "id": "binary-content-encoding",
+          "passed": true
+        },
+        {
+          "id": "binary-decoded-length",
+          "passed": true
+        },
+        {
+          "id": "binary-sha256-after-source-deletion",
+          "passed": true
+        },
+        {
+          "id": "repeat-publication-acknowledged",
+          "passed": true
+        },
+        {
+          "id": "repeat-creates-separate-snapshot",
+          "passed": true
+        },
+        {
+          "id": "snapshot-ids-are-distinct",
+          "passed": true
+        },
+        {
+          "id": "invalid-metadata-rejected",
+          "passed": true
+        },
+        {
+          "id": "rejected-upload-not-retained",
+          "passed": true
+        },
+        {
+          "id": "partial-upload-cancellation-propagated",
+          "passed": true
+        },
+        {
+          "id": "cancelled-upload-not-retained",
+          "passed": true
+        },
+        {
+          "id": "connection-survives-cancellation",
+          "passed": true
+        },
+        {
+          "id": "publication-after-abort-succeeds",
+          "passed": true
+        },
+        {
+          "id": "four-successful-publications-retained",
+          "passed": true
+        },
+        {
+          "id": "three-report-snapshots-retained",
+          "passed": true
+        },
+        {
+          "id": "repeated-report-content-preserved",
+          "passed": true
+        }
+      ],
+      "output": {
+        "publishedSnapshots": [
+          {
+            "snapshotId": "app-artifact-e7e0c0ad693c4d27a64f7181328732e6",
+            "artifactId": "report",
+            "path": "report.json"
+          },
+          {
+            "snapshotId": "app-artifact-83eacc3374614edbb2e9d6779509bd3b",
+            "artifactId": "binary",
+            "path": "fixture.bin"
+          },
+          {
+            "snapshotId": "app-artifact-c3519cd349d44734bcf6dfedd03698ed",
+            "artifactId": "report",
+            "path": "report.json"
+          },
+          {
+            "snapshotId": "app-artifact-51058e3e3aa14f5ab0af65ef6d9b3a6b",
+            "artifactId": "report",
+            "path": "report.json"
+          }
+        ],
+        "binarySize": 131089,
+        "binarySha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+        "invalidUploadRetained": false,
+        "cancelledUploadRetained": false
+      },
+      "deviceId": "emulator-5556",
+      "deviceName": "Pixel_3a_API_33_arm64-v8a",
+      "finalFrameId": "20261017232713114-c89e1a60c9b14fd2a91df25da32573ba",
+      "sessionEnded": true
+    },
+    {
+      "platform": "ios",
+      "sessionId": "ai-ansight-testapps-artifacts-2268",
+      "passed": true,
+      "durationMilliseconds": 11916,
+      "traceEnabled": true,
+      "assertions": [
+        {
+          "id": "connected-to-host",
+          "passed": true
+        },
+        {
+          "id": "check-counters-reset",
+          "passed": true
+        },
+        {
+          "id": "baseline-list-complete",
+          "passed": true
+        },
+        {
+          "id": "report-host-receipt",
+          "passed": true
+        },
+        {
+          "id": "report-retained-before-receipt",
+          "passed": true
+        },
+        {
+          "id": "report-artifact-id",
+          "passed": true
+        },
+        {
+          "id": "report-mime-type",
+          "passed": true
+        },
+        {
+          "id": "report-content-complete",
+          "passed": true
+        },
+        {
+          "id": "report-is-utf8",
+          "passed": true
+        },
+        {
+          "id": "report-unicode-content",
+          "passed": true
+        },
+        {
+          "id": "report-byte-length",
+          "passed": true
+        },
+        {
+          "id": "binary-host-receipt",
+          "passed": true
+        },
+        {
+          "id": "binary-retained-before-receipt",
+          "passed": true
+        },
+        {
+          "id": "binary-entry-present",
+          "passed": true
+        },
+        {
+          "id": "binary-mime-type",
+          "passed": true
+        },
+        {
+          "id": "binary-content-complete",
+          "passed": true
+        },
+        {
+          "id": "binary-spans-three-chunks",
+          "passed": true
+        },
+        {
+          "id": "binary-content-encoding",
+          "passed": true
+        },
+        {
+          "id": "binary-decoded-length",
+          "passed": true
+        },
+        {
+          "id": "binary-sha256-after-source-deletion",
+          "passed": true
+        },
+        {
+          "id": "repeat-publication-acknowledged",
+          "passed": true
+        },
+        {
+          "id": "repeat-creates-separate-snapshot",
+          "passed": true
+        },
+        {
+          "id": "snapshot-ids-are-distinct",
+          "passed": true
+        },
+        {
+          "id": "invalid-metadata-rejected",
+          "passed": true
+        },
+        {
+          "id": "rejected-upload-not-retained",
+          "passed": true
+        },
+        {
+          "id": "partial-upload-cancellation-propagated",
+          "passed": true
+        },
+        {
+          "id": "cancelled-upload-not-retained",
+          "passed": true
+        },
+        {
+          "id": "connection-survives-cancellation",
+          "passed": true
+        },
+        {
+          "id": "publication-after-abort-succeeds",
+          "passed": true
+        },
+        {
+          "id": "four-successful-publications-retained",
+          "passed": true
+        },
+        {
+          "id": "three-report-snapshots-retained",
+          "passed": true
+        },
+        {
+          "id": "repeated-report-content-preserved",
+          "passed": true
+        }
+      ],
+      "output": {
+        "publishedSnapshots": [
+          {
+            "snapshotId": "app-artifact-875bd198803343338a80d51c48b5c0a0",
+            "artifactId": "report",
+            "path": "report.json"
+          },
+          {
+            "snapshotId": "app-artifact-8ce5f978cac344a1981e7b789dfc7e5c",
+            "artifactId": "binary",
+            "path": "fixture.bin"
+          },
+          {
+            "snapshotId": "app-artifact-cc46dc49d46e46adafff9aada180074e",
+            "artifactId": "report",
+            "path": "report.json"
+          },
+          {
+            "snapshotId": "app-artifact-7650999f5f3f42e8a465fe30f5519270",
+            "artifactId": "report",
+            "path": "report.json"
+          }
+        ],
+        "binarySize": 131089,
+        "binarySha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3",
+        "invalidUploadRetained": false,
+        "cancelledUploadRetained": false
+      },
+      "deviceId": "4594102E-88A3-4242-8851-F959C4C9DBBC",
+      "deviceName": "iPhone 17e",
+      "finalFrameId": "20261017232619661-874c2b050fe44c2bbb3d634b2bdb7d51",
+      "sessionEnded": true
+    }
+  ],
+  "retainedAfterHostRestart": [
+    {
+      "sessionId": "ai-ansight-testapps-artifacts-2269",
+      "passed": true,
+      "artifacts": [
+        {
+          "snapshotId": "app-artifact-e7e0c0ad693c4d27a64f7181328732e6",
+          "artifactId": "report",
+          "bytes": 101,
+          "sha256": "dfdb2d86c3db8070228f1ac1d479650b8766d329a2e16bea10f22f067427764e"
+        },
+        {
+          "snapshotId": "app-artifact-83eacc3374614edbb2e9d6779509bd3b",
+          "artifactId": "binary",
+          "bytes": 131089,
+          "sha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+        },
+        {
+          "snapshotId": "app-artifact-c3519cd349d44734bcf6dfedd03698ed",
+          "artifactId": "report",
+          "bytes": 101,
+          "sha256": "dfdb2d86c3db8070228f1ac1d479650b8766d329a2e16bea10f22f067427764e"
+        },
+        {
+          "snapshotId": "app-artifact-51058e3e3aa14f5ab0af65ef6d9b3a6b",
+          "artifactId": "report",
+          "bytes": 101,
+          "sha256": "dfdb2d86c3db8070228f1ac1d479650b8766d329a2e16bea10f22f067427764e"
+        }
+      ]
+    },
+    {
+      "sessionId": "ai-ansight-testapps-artifacts-2268",
+      "passed": true,
+      "artifacts": [
+        {
+          "snapshotId": "app-artifact-875bd198803343338a80d51c48b5c0a0",
+          "artifactId": "report",
+          "bytes": 101,
+          "sha256": "dfdb2d86c3db8070228f1ac1d479650b8766d329a2e16bea10f22f067427764e"
+        },
+        {
+          "snapshotId": "app-artifact-8ce5f978cac344a1981e7b789dfc7e5c",
+          "artifactId": "binary",
+          "bytes": 131089,
+          "sha256": "1ec3437cee3cccf3647e130524ade52848571960a3340ae33573beef17d330b3"
+        },
+        {
+          "snapshotId": "app-artifact-cc46dc49d46e46adafff9aada180074e",
+          "artifactId": "report",
+          "bytes": 101,
+          "sha256": "dfdb2d86c3db8070228f1ac1d479650b8766d329a2e16bea10f22f067427764e"
+        },
+        {
+          "snapshotId": "app-artifact-7650999f5f3f42e8a465fe30f5519270",
+          "artifactId": "report",
+          "bytes": 101,
+          "sha256": "dfdb2d86c3db8070228f1ac1d479650b8766d329a2e16bea10f22f067427764e"
+        }
+      ]
+    }
+  ],
+  "schemaSimplification": {
+    "verifiedDate": "2026-10-18",
+    "cliVersion": "1.5.1",
+    "cliBuild": "2026101802",
+    "descriptorSchemaVersion": 1,
+    "requirements": [
+      "ui.semantic",
+      "app.tools",
+      "evidence.artifacts"
+    ],
+    "runs": [
+      {
+        "platform": "android",
+        "sessionId": "ai-ansight-testapps-artifacts-2271",
+        "passed": true,
+        "durationMilliseconds": 76602,
+        "assertionsPassed": 32,
+        "sessionEnded": true
+      },
+      {
+        "platform": "ios",
+        "sessionId": "ai-ansight-testapps-artifacts-2270",
+        "passed": true,
+        "durationMilliseconds": 16250,
+        "assertionsPassed": 32,
+        "sessionEnded": true
+      }
+    ]
+  }
+}

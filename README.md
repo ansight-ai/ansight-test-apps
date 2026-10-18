@@ -5,6 +5,7 @@ Small apps for validating features in the Ansight CLI and SDKs.
 | Suite | Platforms | Device requirement | Purpose |
 | --- | --- | --- | --- |
 | [Annotations](annotations/README.md) | iOS, Android | Simulator or emulator | Verify native in-app annotation capture and same-session host delivery. |
+| [Artifact Publishing — MAUI](artifact-publishing/README.md) | .NET MAUI on Android and iOS | Emulator or simulator | Verify app-initiated artifact uploads, retained file integrity, repeated publication, rejection, and partial-transfer cancellation. |
 | [Audio](audio/README.md) | iOS, Android | Simulator or emulator | Inject speech through the virtual microphone and verify the recording or native transcript. |
 | [Background Transcription](background-transcription/README.md) | iOS 26+, Android 15+ | Physical device for native speech validation; simulator or emulator for the automated injection test | Validate transcription while an Ansight-instrumented app is backgrounded. |
 | [Evergine Tools](evergine-tools/README.md) | .NET MAUI on iOS and Android | iOS simulator verified; Android unverified | Prototype Evergine scene inspection and camera control through Ansight remote tools. |

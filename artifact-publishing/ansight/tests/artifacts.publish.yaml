@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../schema/test-definition.v1.schema.json
+schemaVersion: 1
+id: artifacts.publish
+name: App-initiated artifact publishing
+appId: ai.ansight.testapps.artifacts
+taskId: artifacts.publish
