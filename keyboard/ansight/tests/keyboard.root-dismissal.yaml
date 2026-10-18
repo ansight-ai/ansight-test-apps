@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=../schema/test-definition.v1.schema.json
+schemaVersion: 1
+id: keyboard.root-dismissal
+name: Keyboard dismissal preserves the root MAUI page
+appId: ai.ansight.testapps.keyboard
+taskId: keyboard.root-dismissal

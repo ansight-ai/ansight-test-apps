@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net10.0-android;net10.0-ios</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Ansight.KeyboardHarness</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <!-- Installable through ADB/Ansight without IDE fast-deployment files. -->
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ApplicationTitle>Ansight Keyboard</ApplicationTitle>
+    <ApplicationId>ai.ansight.testapps.keyboard</ApplicationId>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">26.0</SupportedOSPlatformVersion>
+    <AnsightRemoteToolsPolicy>Allowed</AnsightRemoteToolsPolicy>
+    <AnsightPackageVersion Condition="'$(AnsightPackageVersion)' == ''">1.8.1</AnsightPackageVersion>
+    <AnsightHostDiscoveryPort Condition="'$(AnsightHostDiscoveryPort)' == ''">45123</AnsightHostDiscoveryPort>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0-ios' and $([System.String]::Copy('$(RuntimeIdentifier)').StartsWith('iossimulator'))">
+    <EnableCodeSigning>true</EnableCodeSigning>
+    <CodesignKey>-</CodesignKey>
+    <CodesignProvision></CodesignProvision>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.71" />
+    <MauiIcon Include="Resources/AppIcon/appicon.svg" Color="#153D4D" />
+    <MauiSplashScreen Include="Resources/Splash/splash.svg" Color="#153D4D" BaseSize="128,128" />
+    <AssemblyMetadata Include="AnsightHostDiscoveryPort" Value="$(AnsightHostDiscoveryPort)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(AnsightSdkRoot)' == ''">
+    <PackageReference Include="Ansight.Maui" Version="$(AnsightPackageVersion)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(AnsightSdkRoot)' != ''">
+    <ProjectReference Include="$(AnsightSdkRoot)/src/dotnet/Ansight.Maui/Ansight.Maui.csproj" />
+  </ItemGroup>
+  <!-- Project references do not import the NuGet package's buildTransitive policy. -->
+  <Import Project="$(AnsightSdkRoot)/src/dotnet/Ansight.Core/build/Ansight.targets" Condition="'$(AnsightSdkRoot)' != ''" />
+</Project>

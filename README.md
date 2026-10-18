@@ -9,6 +9,7 @@ Small apps for validating features in the Ansight CLI and SDKs.
 | [Background Transcription](background-transcription/README.md) | iOS 26+, Android 15+ | Physical device for native speech validation; simulator or emulator for the automated injection test | Validate transcription while an Ansight-instrumented app is backgrounded. |
 | [Evergine Tools](evergine-tools/README.md) | .NET MAUI on iOS and Android | iOS simulator verified; Android unverified | Prototype Evergine scene inspection and camera control through Ansight remote tools. |
 | [Flutter](flutter/README.md) | Flutter on macOS 10.15+ | Mac host | Exercise the Flutter SDK through its full feature harness and retain an evidence-backed Ansight session. |
+| [Keyboard — MAUI](keyboard/README.md) | .NET MAUI on Android and iOS | Emulator or simulator | Verify keyboard dismissal preserves the root page, input values, and app responsiveness. |
 | [Modal Surface](modal-surface/README.md) | Native Android | Emulator | Verify touches in a modal window and screenshots of controls over a GPU surface. |
 | [Motion](motion/README.md) | Native Android and iOS | Android emulator or iOS simulator | Verify app-observed accelerometer injection on Android and automated UIKit shake delivery on iOS. |
 | [QR Pairing — MAUI](qr-pairing/maui/README.md) | .NET MAUI on iOS and Android | Simulator/emulator for local registration; physical device for QR enrollment | Reusable Ansight pairing, remembered enrollment, reconnect, diagnostics and capture controls. |
