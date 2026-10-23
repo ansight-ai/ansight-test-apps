@@ -12,7 +12,7 @@ SDK-equipped iPad Simulator apps for validating Pencil input playback and what e
 
 ## Local checkout layout
 
-The unpublished packages resolve from the sibling SDK checkout:
+The source-based harnesses resolve packages from the sibling SDK checkout:
 
 ```text
 <git>/

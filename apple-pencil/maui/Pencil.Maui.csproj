@@ -13,7 +13,7 @@
     <SupportedOSPlatformVersion>17.5</SupportedOSPlatformVersion>
     <AnsightRemoteToolsPolicy>Allowed</AnsightRemoteToolsPolicy>
     <MauiVersion>9.0.120</MauiVersion>
-    <AnsightPackageVersion Condition="'$(AnsightPackageVersion)' == ''">1.8.1</AnsightPackageVersion>
+    <AnsightPackageVersion Condition="'$(AnsightPackageVersion)' == ''">1.9.0</AnsightPackageVersion>
   </PropertyGroup>
   <!-- Package references intentionally exercise the precompiled native framework, not SDK source compilation. -->
   <ItemGroup>
