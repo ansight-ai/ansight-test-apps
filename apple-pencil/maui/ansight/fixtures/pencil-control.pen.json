@@ -1,0 +1,8 @@
+{
+  "schema": "ansight.pen-input/v1",
+  "description": "HID-only control: requested properties must not be supplied by inactive SDK overrides.",
+  "samples": [
+    {"offsetMs":0,"phase":"down","x":0.85,"y":0.85,"pressure":0.8,"altitudeRadians":0.4,"azimuthRadians":0.8,"rollRadians":2},
+    {"offsetMs":120,"phase":"up","x":0.85,"y":0.85}
+  ]
+}

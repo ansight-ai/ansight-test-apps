@@ -1,0 +1,25 @@
+name: ansight_pencil_harness
+description: Apple Pencil input verification with the Ansight Flutter SDK.
+publish_to: none
+version: 1.0.0+1
+environment:
+  sdk: ^3.12.2
+dependencies:
+  flutter:
+    sdk: flutter
+  ansight_flutter:
+    path: ../../../ansight/ansight-sdk/src/flutter
+  ansight_pencil:
+    path: ../../../ansight/ansight-sdk/src/flutter-pencil
+  path_provider: ^2.1.5
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+dependency_overrides:
+  ansight_flutter:
+    path: ../../../ansight/ansight-sdk/src/flutter
+flutter:
+  config:
+    enable-swift-package-manager: false
+  uses-material-design: true

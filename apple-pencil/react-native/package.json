@@ -1,0 +1,21 @@
+{
+  "name": "pencil-react-native-harness",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "bundle": "node scripts/bundle.mjs"
+  },
+  "dependencies": {
+    "react": "19.2.7",
+    "react-native": "0.86.0",
+    "@ansight/react-native": "file:../../../ansight/ansight-sdk/src/react-native",
+    "@ansight/react-native-pencil": "file:../../../ansight/ansight-sdk/src/react-native-pencil",
+    "@ansight/pencil-runtime": "file:../../../ansight/ansight-sdk/src/pencil-runtime"
+  },
+  "devDependencies": {
+    "@react-native/metro-config": "0.86.0",
+    "@react-native/babel-preset": "0.86.0",
+    "@types/react": "^19.0.0",
+    "typescript": "~5.9.2"
+  }
+}

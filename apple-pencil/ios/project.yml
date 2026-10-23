@@ -1,0 +1,42 @@
+name: PencilHarness
+packages:
+  AnsightSDK:
+    path: ../../../ansight/ansight-sdk/src/ios
+targets:
+  PencilHarness:
+    type: application
+    platform: iOS
+    deploymentTarget: '17.5'
+    sources: [PencilHarness]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ai.ansight.testapps.pencil
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        TARGETED_DEVICE_FAMILY: '2'
+        SWIFT_VERSION: '6.0'
+    dependencies:
+      - package: AnsightSDK
+        product: Ansight
+      - package: AnsightSDK
+        product: AnsightPencil
+  PencilIsolationTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: '17.5'
+    sources: [PencilIsolationTests]
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: '6.0'
+        PRODUCT_BUNDLE_IDENTIFIER: ai.ansight.testapps.pencil.tests
+    dependencies:
+      - target: PencilHarness
+schemes:
+  PencilHarness:
+    build:
+      targets:
+        PencilHarness: all
+    test:
+      targets: [PencilIsolationTests]

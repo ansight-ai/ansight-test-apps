@@ -1,0 +1,17 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+platform :ios, '17.5'
+prepare_react_native_project!
+use_frameworks! :linkage => :static
+
+target 'PencilReactNative' do
+  use_react_native!(:path => '../node_modules/react-native', :app_path => "#{Pod::Config.instance.installation_root}/..")
+  sdk_path = '../../../../ansight/ansight-sdk/src/ios'
+  Dir[File.join(__dir__, sdk_path, '*.podspec')].each do |spec|
+    pod File.basename(spec, '.podspec'), :path => sdk_path
+  end
+  pod 'AnsightReactNative', :path => '../../../../ansight/ansight-sdk/src/react-native'
+  pod 'AnsightReactNativePencil', :path => '../../../../ansight/ansight-sdk/src/react-native-pencil'
+  post_install do |installer|
+    react_native_post_install(installer, '../node_modules/react-native', :mac_catalyst_enabled => false)
+  end
+end

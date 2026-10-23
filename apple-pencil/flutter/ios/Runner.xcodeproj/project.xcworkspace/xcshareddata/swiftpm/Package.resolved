@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "ansight-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ansight-ai/ansight-sdk.git",
+      "state" : {
+        "revision" : "2b37933a0a7686ce6e43c8ea4bf5a293b6d5ecd7",
+        "version" : "1.0.2-preview.4"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -1,0 +1,6 @@
+node_modules/
+ios/Pods/
+ios/Build/
+ios/build/
+ios/main.jsbundle*
+ios/.xcode.env.local

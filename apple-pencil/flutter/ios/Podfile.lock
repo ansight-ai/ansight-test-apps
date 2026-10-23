@@ -1,0 +1,137 @@
+PODS:
+  - Ansight (1.8.1):
+    - AnsightAnnotations (= 1.8.1)
+    - AnsightConnectivity (= 1.8.1)
+    - AnsightCore (= 1.8.1)
+    - AnsightMotion (= 1.8.1)
+    - AnsightPairingQR (= 1.8.1)
+    - AnsightToolsClipboard (= 1.8.1)
+    - AnsightToolsDatabase (= 1.8.1)
+    - AnsightToolsFileDescriptorDiagnostics (= 1.8.1)
+    - AnsightToolsFileSystem (= 1.8.1)
+    - AnsightToolsPreferences (= 1.8.1)
+    - AnsightToolsReflection (= 1.8.1)
+    - AnsightToolsSecureStorage (= 1.8.1)
+    - AnsightToolsVisualTree (= 1.8.1)
+  - ansight_flutter (1.8.1):
+    - Ansight (= 1.8.1)
+    - Flutter
+  - ansight_pencil (1.8.1):
+    - AnsightPencil (= 1.8.1)
+    - Flutter
+  - AnsightAnnotations (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - AnsightConnectivity (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - AnsightCore (1.8.1)
+  - AnsightMotion (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - AnsightPairingQR (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - AnsightPencil (1.8.1):
+    - AnsightCore (= 1.8.1)
+    - AnsightPencilRuntime (= 1.8.1)
+  - AnsightPencilRuntime (1.8.1)
+  - AnsightToolsClipboard (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - AnsightToolsDatabase (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - AnsightToolsFileDescriptorDiagnostics (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - AnsightToolsFileSystem (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - AnsightToolsPreferences (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - AnsightToolsReflection (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - AnsightToolsSecureStorage (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - AnsightToolsVisualTree (1.8.1):
+    - AnsightCore (= 1.8.1)
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - Ansight (from `../../../../ansight/ansight-sdk/src/ios`)
+  - ansight_flutter (from `.symlinks/plugins/ansight_flutter/ios`)
+  - ansight_pencil (from `.symlinks/plugins/ansight_pencil/ios`)
+  - AnsightAnnotations (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightConnectivity (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightCore (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightMotion (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightPairingQR (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightPencil (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightPencilRuntime (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightToolsClipboard (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightToolsDatabase (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightToolsFileDescriptorDiagnostics (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightToolsFileSystem (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightToolsPreferences (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightToolsReflection (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightToolsSecureStorage (from `../../../../ansight/ansight-sdk/src/ios`)
+  - AnsightToolsVisualTree (from `../../../../ansight/ansight-sdk/src/ios`)
+  - Flutter (from `Flutter`)
+
+EXTERNAL SOURCES:
+  Ansight:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  ansight_flutter:
+    :path: ".symlinks/plugins/ansight_flutter/ios"
+  ansight_pencil:
+    :path: ".symlinks/plugins/ansight_pencil/ios"
+  AnsightAnnotations:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightConnectivity:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightCore:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightMotion:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightPairingQR:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightPencil:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightPencilRuntime:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightToolsClipboard:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightToolsDatabase:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightToolsFileDescriptorDiagnostics:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightToolsFileSystem:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightToolsPreferences:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightToolsReflection:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightToolsSecureStorage:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  AnsightToolsVisualTree:
+    :path: "../../../../ansight/ansight-sdk/src/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  Ansight: 86ef6fe2730848d1a89d2636c79dc4aed64e7ee8
+  ansight_flutter: f47660f35adc77a056e1c360005ec1065c4d5c6d
+  ansight_pencil: 49464816a913a8217e470348ce4e60a8565ffd2c
+  AnsightAnnotations: 0b5d7d7f86d328391b5f76d6b1828246b9111519
+  AnsightConnectivity: faa6a19a2f31ec876564d5ea3ff10fde0c8b4c34
+  AnsightCore: 3b7065fe163fb9e6fc06022647f0f48f664ed951
+  AnsightMotion: 7b3733bddff2c084e7b86e3799cee28046c92ddf
+  AnsightPairingQR: 8cd3745bef8d14be34a8b5adf5f21d7133e66966
+  AnsightPencil: b9f7da5b9eb96cc19e68b086aa55d59931b51f5c
+  AnsightPencilRuntime: da83c18828c78cbfec62e3643255eb4f71242324
+  AnsightToolsClipboard: 6e3b174a9129f4f6142ac1e8158cb09a3c82e1be
+  AnsightToolsDatabase: f2937983a9542ee7d6f87f7feb8fb612ceb68ce4
+  AnsightToolsFileDescriptorDiagnostics: f25337c0dde8af4a46ac2a2539154fb057e87be3
+  AnsightToolsFileSystem: afd6387122f69f3bc5531287b203b5eabd0b674e
+  AnsightToolsPreferences: 9f9b0c9b4c6709b4c0801754638ccad31729d1a6
+  AnsightToolsReflection: 73550ff8310f7e3bca6fa098e71bef51e0664701
+  AnsightToolsSecureStorage: a026a0b76c3f4075c4925494a4adf51496508c8c
+  AnsightToolsVisualTree: 14d70fe66d967b5b057bd4c92a217e60b3fd9cba
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+
+PODFILE CHECKSUM: 82b2ba0cd4f636165615b5df4384db58f9422204
+
+COCOAPODS: 1.16.2

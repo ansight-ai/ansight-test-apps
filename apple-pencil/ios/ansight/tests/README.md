@@ -1,0 +1,97 @@
+# Tests
+
+A prompt test describes a user journey and its observable finish line. Ansight gives
+the instructions to an agent, which operates the app and verifies each requested
+check using evidence. Put actions and checks together in the prompt; a separate
+validation block is optional.
+
+Read the full [Ansight workspace tests guide](https://www.ansight.ai/docs/workspace/tests).
+
+```sh
+ansight workspace add test . onboarding.smoke \
+  --app-id com.example.app \
+  --assertion "The signed-in home screen is visible"
+```
+
+```yaml
+schemaVersion: 1
+id: onboarding.smoke
+name: Onboarding smoke test
+appId: com.example.app
+hintTasks:
+  - onboarding.open-sign-in
+  - onboarding.submit-sign-in
+prompt: |-
+  Launch the app and complete onboarding as a new user.
+  Verify that the signed-in home screen is visible.
+requiredSecrets:
+  - TEST_USER_PASSWORD
+```
+
+`requiredSecrets` contains aliases only; values are resolved at run time.
+`hintTasks` is optional. It names up to five repository task IDs to preload and
+suggest to the agent. A hint is used only when its starting state and scope fit;
+the task's own assertions provide evidence for steps it verifies.
+Use `@task/ID` for an exact workspace task or `@selector/ID` for an exact
+automation ID inside the prompt. The YAML editor completes tasks and recorded
+selectors and shows their details on hover. Percent-encode special characters
+in IDs. New tests use `.yaml`; existing `.json` tests remain valid.
+
+```sh
+ansight test validate .
+ansight test run . onboarding.smoke
+```
+
+Virtual-device windows are shown by default. For a windowless local or CI run,
+add `--headless` explicitly; `--json` alone does not select it:
+
+```sh
+ansight test run . onboarding.smoke --headless --json
+ansight test run-all . --headless --json
+```
+
+This applies to every target in multi-device runs. iOS skips opening
+Simulator.app; newly started Android emulators use `-no-window`. Existing
+windows and physical devices are left alone. `--headless` is a CLI option,
+not a field in the test definition.
+
+## Deterministic task tests
+
+Supply `taskId` and omit `prompt` to run a saved task directly, with no model
+calls or AI gateway preparation:
+
+```yaml
+schemaVersion: 1
+id: checkout.smoke
+appId: com.example.app
+taskId: checkout.complete
+```
+
+Run it with `ansight test run . checkout.smoke` or `ansight test run-all .`.
+The runner handles the target and app lifecycle, retains evidence and history,
+and uses the task's assertions and limits. Only a `Passed` task result passes.
+Use optional `taskInput: { ... }` for arguments declared by the task's input
+schema. Keep secret aliases in `requiredSecrets` and read them via the task's
+`secrets` API. Task-only tests reject `validation` and `hintTasks`; put checks
+in the task. `taskInput` is not accepted with `prompt`.
+
+Existing tests with both `taskId` and `prompt` retain agent execution.
+
+## Test sessions
+
+Once a test claims a session, the session header and list show its test name and
+status: Running, Passed, Failed, or Cancelled. The app name remains visible.
+Session info includes a host-managed `ui-test` custom-property group containing
+`testId`, `testName`, `runId`, `status`, `executionKind`, `startedUtc`, and
+`completedUtc`. Batch runs also include `batchRunId`, `batchIndex` (one-based),
+and `batchCount`. Stored success status is `succeeded`; execution kind is `task`
+or `agent`.
+
+The properties are retained in saved and exported captures. Reusing a session
+for another test replaces this group with the latest run; earlier runs remain
+in test history. Existing session names, notes, pins, and tags are preserved.
+Older recordings without this metadata keep their existing display.
+
+Full execution traces are captured by default for history review and export. Use
+`--no-trace` on `ansight test run` or `ansight test run-all` to retain only
+lightweight audit metadata. The existing `--trace` flag is still accepted.

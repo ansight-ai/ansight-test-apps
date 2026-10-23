@@ -4,6 +4,7 @@ Small apps for validating features in the Ansight CLI and SDKs.
 
 | Suite | Platforms | Device requirement | Purpose |
 | --- | --- | --- | --- |
+| [Apple Pencil](apple-pencil/README.md) | Swift/UIKit, MAUI, Flutter, React Native, Capacitor on iOS | iPad Simulator | Verify Pencil playback, captured pressure/orientation/hover, scoped delivery and ordinary-input isolation. |
 | [Annotations](annotations/README.md) | iOS, Android | Simulator or emulator | Verify native in-app annotation capture and same-session host delivery. |
 | [Artifact Publishing — MAUI](artifact-publishing/README.md) | .NET MAUI on Android and iOS | Emulator or simulator | Verify app-initiated artifact uploads, retained file integrity, repeated publication, rejection, and partial-transfer cancellation. |
 | [Audio](audio/README.md) | iOS, Android | Simulator or emulator | Inject speech through the virtual microphone and verify the recording or native transcript. |

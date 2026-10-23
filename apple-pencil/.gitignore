@@ -1,0 +1,13 @@
+**/Build/
+**/build/
+**/bin/
+**/obj/
+**/node_modules/
+**/Pods/
+**/.dart_tool/
+**/.symlinks/
+**/xcuserdata/
+**/.xcode.env.local
+**/main.jsbundle*
+**/dist/
+**/.DS_Store
